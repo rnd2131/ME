@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info graphy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+    </style>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic Styling */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+            overflow: hidden;
+            font-family: "Nunito", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 'weight';
+            font-style: normal;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Dark Theme */
+        body.dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Header */
+        .header {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(29, 29, 218, 0.523);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1.5em;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 0px 50px rgba(202, 205, 255, 0.471);
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+        }
+
+        /* Theme Switcher */
+        #theme-switcher {
+            position: absolute;
+            top: 5px;
+            right: 20px;
+            background-color: #03dac500;
+            color: #121212;
+            border: none;
+            border-radius: 100px;
+            padding: 0px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: xx-large;
+        }
+
+        body.dark-theme #theme-switcher {
+            background-color: #bb86fc00;
+            color: #121212;
+        }
+
+        /* Container */
+        .container {
+            padding: 10px;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 0px;            
+            background: rgba( 87, 86, 213, 0.15 );
+            box-shadow: 0 8px 50px 0 rgba(31, 38, 135, 0.471);
+            backdrop-filter: blur( 2.5px );
+            -webkit-backdrop-filter: blur( 2.5px );
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.293);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 75%;
+            max-width: 800px;
+            background-color: rgba(29, 29, 218, 0.523);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 30px;
+            border-radius: 50px;
+            box-shadow: 0 8px 50px 0 rgba(161, 167, 255, 0.471);;
+            z-index: 1000;
+            backdrop-filter: blur( 2.5px )
+        }
+
+        .bottom-nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            transition: transform 0.5s ease;
+        }
+
+        .bottom-nav button:hover {
+            transform: scale(1.2);
+            background-color: #bdb7ff3c;
+            border-radius: 20px;
+        }
+
+        /* Section Styling */
+        .section {
+            display: none;
+            opacity: 0;
+            animation: fadeOut 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        }
+
+        img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 50px;
+            margin-top: 20px;
+            box-shadow: 0 0px 30px rgba(255, 255, 255, 0.779);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .header {
+                font-size: 1.2em;
+            }
+
+            .bottom-nav button {
+                font-size: 20px;
+                padding: 2px;
+            }
+        }
+        p{
+            font-size: large;
+        }
+        #tel{
+        background-color: #3898ff;
+        border: none;
+        width: 70%;
+        max-width: 150px;
+        height: 30px;
+        border-radius: 20px;
+        margin-top: 30px;
+        cursor: pointer;
+        display: block;
+        margin: 15px auto 0px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        RND2131
+        <!-- Theme Switcher -->
+        <button id="theme-switcher">☀️</button>
+    </div>
+
+    <!-- Container for content -->
+    <div class="container"> 
+        <div id="section1" class="section active" >
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQroD-IvoEk3EQ3glzMQccCOUxMCgZffKbPvOhPhIjFBmapf537ahHkddNVZgOJ2qaHgU0&usqp=CAU" alt="profile">
+            <h1 style="margin-bottom: 30px;">NAME : RADMAN</h1>
+            <p style="margin-bottom: 30px;">THE PROgrammer</p>
+            <p style="margin-bottom: 20px;">Supported languages: Java, JS, Dart, Python</p>
+            <p style="margin-bottom: 10px;">Frameworks: React & ReactNative, Vue, Angular, Ionic, Flutter, Django & more...</p>
+        </div>
+        <div id="section2" class="section">
+            <h1 style="margin: 20px;">Modern</h1>
+            <p style="margin-bottom: 20px;"> Its like your sister build on trends.</p>
+        </div>
+        <div id="section3" class="section">
+            <h1 style="margin: 50px;">Connect ME :</h1>
+            <a href="https://t.me/sooske2131">
+                <button id="tel"> Telegram </button>
+            </a>
+            <a href="tel:0902-758-8861">
+                <button id="tel" style="margin-bottom: 50px;"> Call </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <button onclick="showSection('section2')">Style</button>
+        <button onclick="showSection('section1')">Hello</button>
+        <button onclick="showSection('section3')">Info</button>
+    </div>
+
+    <script>
+        // Theme Switcher
+        const themeSwitcher = document.getElementById('theme-switcher');
+    
+        // Check localStorage for saved theme and apply it
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        }
+    
+        themeSwitcher.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark-theme');
+            } else {
+                localStorage.removeItem('theme');
+            }
+        });
+    
+        // Function to show the selected section
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+    
+            const activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+    
+            // Save the currently active section to localStorage
+            localStorage.setItem('activeSection', sectionId);
+        }
+    
+        // Check localStorage for saved section and display it
+        const savedSection = localStorage.getItem('activeSection');
+        if (savedSection) {
+            showSection(savedSection);
+        } else {
+            showSection('section1'); // Default section if nothing is saved
+        }
+    </script>
+
+</body>
+</html>
