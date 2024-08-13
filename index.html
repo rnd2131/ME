@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
     <title>Info graphy</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
@@ -284,7 +285,18 @@
         } else {
             showSection('section1'); // Default section if nothing is saved
         }
-    </script>
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+            .then(() => {
+            console.log('Service Worker registered successfully.');
+        })
+        .catch(error => {
+            console.error('Service Worker registration failed:', error);
+        });
+    }
+
+</script>
 
 </body>
 </html>
