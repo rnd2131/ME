@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0; /* Slightly lighter background for contrast */
+            margin: 0;
+            padding: 0;
+            overflow: scroll;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px 0;
+            color: #333; /* Darker color for better readability */
+        }
+
+        #product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product-item {
+            background: rgba(255, 255, 255, 0.9); /* White with 90% opacity for transparency */
+            border: 1px solid rgba(0, 0, 0, 0.1); /* Lighter border for a modern look */
+            padding: 20px;
+            margin: 15px;
+            width: 280px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions for hover effects */
+            text-align: center;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px; /* Rounded corners for images */
+        }
+
+        .product-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .product-item p {
+            color: #666; /* Lighter color for text */
+        }
+
+        .product-item strong {
+            color: #e74c3c; /* Highlight price with a vibrant color */
+        }
+        #but{
+            background-color: aqua;
+        }
+        h4{
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="product-list"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js';
+        import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js';
+
+        // Your Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyAmb5P1ivaKpfOVXhUqKV-PFkYWiAYWUAI",
+            authDomain: "expo-914f0.firebaseapp.com",
+            projectId: "expo-914f0",
+            storageBucket: "expo-914f0.appspot.com",
+            messagingSenderId: "339889084933",
+            appId: "1:339889084933:web:4f17508c9fca6c9c4c9a6c",
+            measurementId: "G-HL82F5YSHS"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Function to fetch and display products
+        async function displayProducts() {
+            const productsContainer = document.getElementById('product-list');
+            const productsCollection = collection(db, 'products'); // Assuming your Firestore collection is named 'products'
+            const productsSnapshot = await getDocs(productsCollection);
+            const productsList = productsSnapshot.docs.map(doc => doc.data());
+
+            productsList.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.classList.add('product-item');
+
+                productItem.innerHTML = `
+                    <img src="${product.imageUrl}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p id="Code">${product.description}</p>
+                    <p>${product.availability}</p>
+                    <h4>${product.price} تومان</h4>
+                    <button onclick="copy()" style="width: 200px; height: 50px; margin-bottom: 10px; margin-top: 20px; border-radius: 15px;border: none;" id="but">BUY</button>
+                `;
+
+                productsContainer.appendChild(productItem);
+            });
+        }
+
+        // Fetch and display products on page load
+        displayProducts();
+    </script>
+    <script>
+        function copy(){
+            navigator.clipboard.writeText(document.getElementById('Code').innerText);
+            window.alert('code copied');
+            window.location.href = "shop.html";
+        }
+    </script>
+</body>
+</html>
