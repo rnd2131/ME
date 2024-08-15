@@ -31,16 +31,12 @@
             min-height: 100vh;
             padding: 20px;
             text-align: center;
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-            overflow: hidden;
+            overflow: visible;
             font-family: "Nunito", sans-serif;
             font-optical-sizing: auto;
             font-weight: 'weight';
             font-style: normal;
-        }
-        body::-webkit-scrollbar {
-            display: none;
+
         }
 
         /* Dark Theme */
@@ -53,7 +49,7 @@
         .header {
             width: 100%;
             max-width: 800px;
-            background-color: rgba(29, 29, 218, 0.523);
+            background-color: rgba(29, 29, 218, 0.332);
             color: white;
             padding: 15px 20px;
             text-align: center;
@@ -107,14 +103,14 @@
             transform: translateX(-50%);
             width: 75%;
             max-width: 800px;
-            background-color: rgba(29, 29, 218, 0.523);
+            background-color: rgba(29, 29, 218, 0.349);
             display: flex;
             justify-content: space-around;
             padding: 10px 30px;
             border-radius: 50px;
             box-shadow: 0 8px 50px 0 rgba(161, 167, 255, 0.471);;
             z-index: 1000;
-            backdrop-filter: blur( 2.5px )
+            backdrop-filter: blur( 1.5px )
         }
 
         .bottom-nav button {
@@ -176,7 +172,7 @@
             object-fit: cover;
             margin-bottom: 50px;
             margin-top: 20px;
-            box-shadow: 0 0px 30px rgba(255, 255, 255, 0.779);
+            box-shadow: 0 0px 30px rgba(255, 255, 255, 0.232);
         }
 
         /* Responsive Design */
@@ -196,7 +192,7 @@
         #tel{
         background-color: #3898ff;
         border: none;
-        width: 70%;
+        width: 1000px;
         max-width: 150px;
         height: 30px;
         border-radius: 20px;
@@ -205,6 +201,93 @@
         display: block;
         margin: 15px auto 0px auto;
         }
+
+    .hero {
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      padding: 0 10%;
+      background: transparent;
+      color: #ffffff;
+    }
+
+    .hero .text-content {
+      max-width: 50%;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 20px 0;
+      font-size: 18px;
+      color: #cccccc;
+    }
+
+    .hero .cta-button {
+      padding: 12px 24px;
+      background: #e91e63;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .cta-button:hover {
+      background: #c2185b;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 60px 10%;
+      background: transparent;
+    }
+
+    .product-card {
+      background: #333333b0;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .product-card h3 {
+      margin: 20px 0;
+      font-size: 22px;
+      color: #ffffff;
+    }
+
+    .product-card p {
+      color: #cccccc;
+      font-size: 16px;
+    }
+
+    .product-card .price {
+      font-size: 20px;
+      color: #e91e63;
+      font-weight: 700;
+    }
+
+    .prom{
+        width: 100%;
+        height:auto;
+    }
+
     </style>
 </head>
 <body>
@@ -225,14 +308,36 @@
             <p style="margin-bottom: 20px;">Supported languages: Java, JS, Dart, Python</p>
             <p style="margin-bottom: 10px;">Frameworks: React & ReactNative, Vue, Angular, Ionic, Flutter, Django & more...</p>
         </div>
+
+
+
+
         <div id="section2" class="section">
-            <h1 style="margin: 20px;">Modern</h1>
-            <p style="margin-bottom: 20px;"> Its like your sister build on trends.</p>
+            <h1 style="margin-top: 100px; margin-bottom: -30px;">Shop</h1>
+            <section class="product-grid">
+                <div class="product-card">
+                    <img src="https://dkstatics-public.digikala.com/digikala-products/576fd0be52a9bb165c9f60a852676883f8937743_1670758149.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90" alt="Product 2" style="margin-top: 10px;" class="prom">
+                    <h3 style="margin-top: -30px; margin-bottom: 10px;">چیپس</h3>
+                    <p style="margin-bottom: 5px;">Code :</p>
+                    <p style="margin-bottom: 10px;" id="Code">0046611</p>
+                    <p style="margin-bottom: 5px;" dir="rtl" >در صورت پرداخت نکردن کامل یا مشکل در پرداخت از منوی BUY پیام دهید .</p>
+                    <p class="price" style="color: red;">ناموجود</p>
+                    <button onclick="copy()" style="width: 200px; height: 50px; margin-bottom: 10px; margin-top: 20px; border-radius: 15px;border: none;">BUY</button>
+                  </div>
+                <!-- Add more product cards as needed -->
+              </section>
         </div>
+
+
+
         <div id="section3" class="section">
-            <h1 style="margin: 50px;">Connect ME :</h1>
+            <h1 style="margin-top: 50px;">استعلام خرید</h1>
+            <p>در صورت عدم تحویل در یک هفته نام خودتون فیش  آدرس و کد محصول رو بفرستید</p>
             <a href="https://t.me/sooske2131">
                 <button id="tel"> Telegram </button>
+            </a>
+            <a href="sms:09027588861&body=hi">
+                <button id="tel"> SMS </button>
             </a>
             <a href="tel:0902-758-8861">
                 <button id="tel" style="margin-bottom: 50px;"> Call </button>
@@ -242,12 +347,21 @@
 
     <!-- Bottom Navigation -->
     <div class="bottom-nav">
-        <button onclick="showSection('section2')">Style</button>
+        <button onclick="showSection('section2')">Shop</button>
         <button onclick="showSection('section1')">Hello</button>
-        <button onclick="showSection('section3')">Info</button>
+        <button onclick="showSection('section3')">BUY</button>
     </div>
 
     <script>
+
+
+        function copy(){
+            navigator.clipboard.writeText(document.getElementById('Code').innerText);
+            window.alert('code copied');
+            window.location.href = "shop.html";
+        }
+
+
         // Theme Switcher
         const themeSwitcher = document.getElementById('theme-switcher');
     
