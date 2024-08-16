@@ -125,6 +125,17 @@
             background-color: #0000cc;
         }
 
+        /* Style for the back button */
+        #back-button {
+            background-color: #ccc;
+            color: black;
+            margin-top: 10px;
+        }
+
+        #back-button:hover {
+            background-color: #999;
+        }
+
         /* Media query for mobile responsiveness */
         @media (max-width: 600px) {
             #products-list {
@@ -135,6 +146,9 @@
             .product-item {
                 margin: 10px 0;
                 padding: 10px;
+            }
+            #vb{
+                color: #700000;
             }
         }
     </style>
@@ -155,6 +169,7 @@
             <input type="number" id="quantity" placeholder="تعداد" min="1" value="1"> <!-- Input for quantity -->
             <input type="text" id="product-code" placeholder="کد محصول" readonly>
             <button onclick="submitPurchase()">پرداخت</button>
+            <button id="back-button" onclick="closePurchaseForm()">بازگشت</button> <!-- Back button -->
         </div>
     </div>
 
@@ -203,6 +218,11 @@
             document.getElementById('purchase-form-container').style.display = 'flex';
         }
 
+        // Function to close the purchase form
+        function closePurchaseForm() {
+            document.getElementById('purchase-form-container').style.display = 'none';
+        }
+
         // Function to handle the purchase submission
         async function submitPurchase() {
             const buyerName = document.getElementById('buyer-name').value;
@@ -224,7 +244,7 @@
                     alert('برای تکمیل خرید یه منو BUY بروید')
                     alert('در صورت واریز مبلغ کالا تحویل داده میشود');
                     alert('درصورت بروز مشکل از طریغ تلگرام یا پیامک در ارتباط باشید');
-                    document.getElementById('purchase-form-container').style.display = 'none';
+                    closePurchaseForm(); // Close the form after submission
                 } catch (error) {
                     console.error('Failed to submit purchase:', error);
                 }
