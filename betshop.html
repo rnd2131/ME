@@ -13,14 +13,14 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: transparent;
+            background-color: #f4f4f9;
             color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             min-height: 100vh;
-            overflow-x:hidden ;
+            overflow-x: hidden;
         }
 
         h1 {
@@ -28,60 +28,62 @@
             margin: 20px 0;
             font-size: 2.5rem;
             text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         #products-list {
-            display: flex;
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             width: 90%;
             margin: 0 auto;
-            padding: 0px;
+            padding: 20px;
         }
 
         .product-item {
-            background: rgba( 96, 96, 96, 0.15 );
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 9px );
-            -webkit-backdrop-filter: blur( 9px );
-            border-radius: 10px;
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
-            width: 100%;
-            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
             padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
-            margin-top: 10px;
+            text-align: center;
         }
 
         .product-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .product-item img {
             width: 100%;
-            height: 100%;
-            border-radius: 10px;
+            height: 180px;
+            border-radius: 8px;
             margin-bottom: 15px;
             object-fit: cover;
+            transition: all 0.3s ease-in-out;
         }
 
         .product-item h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 10px;
             color: #1a1a1a;
+            font-weight: 600;
         }
 
         .product-item p {
             font-size: 1rem;
             margin: 0;
             color: #555;
+            line-height: 1.5;
         }
 
         .product-item .price {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             margin-top: 10px;
             font-weight: 700;
             color: #009688;
@@ -98,11 +100,16 @@
                 font-size: 2rem;
             }
 
-            .product-item h2 {
-                font-size: 1.3rem;
+            .product-item {
+                padding: 15px;
             }
+
+            .product-item h2 {
+                font-size: 1.4rem;
+            }
+
             .product-item .price {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
         }
 
@@ -112,12 +119,7 @@
             }
 
             .product-item {
-                padding: 15px;
-                width: 50%;
-            }
-
-            .product-item img {
-                max-height: 160px;
+                padding: 10px;
             }
 
             .product-item h2 {
@@ -127,11 +129,16 @@
             .product-item .price {
                 font-size: 1rem;
             }
+
+            .product-item img {
+                height: 150px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <h1>Our Products</h1>
     <div id="products-list">
         <!-- The product items will be displayed here -->
     </div>
@@ -171,7 +178,7 @@
                         <img src="${product.imageUrl}" alt="${product.name}">
                         <h2>${product.name}</h2>
                         <p>${product.description}</p>
-                        <p>${product.availability}</p>
+                        <p class="availability">${product.availability}</p>
                         <p class="price">تومان${product.price.toFixed(3)}</p>
                     `;
 
