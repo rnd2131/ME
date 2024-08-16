@@ -168,7 +168,7 @@
         const databases = new Appwrite.Databases(client);
         const databaseId = 'products';
         const collectionId = '66bf3028000c0a34101e';
-        const purchaseCollectionId = '66bf3028000c0a34101f'; // Collection ID for purchases
+        const purchaseCollectionId = '66bf759d0020d55c17eb'; // Collection ID for purchases
 
         // Function to fetch and display the collection
         async function getProducts() {
@@ -212,6 +212,9 @@
 
             if (buyerName && buyerAddress && productCode && paymentProof) {
                 try {
+                    // Upload payment proof
+                    const storage = new Appwrite.Storage(client);
+                    const paymentProofFile = await storage.createFile('66bf6ffe0022bf78fe4c', 'unique()', paymentProof);
 
                     // Create a purchase document
                     await databases.createDocument(databaseId, purchaseCollectionId, 'unique()', {
@@ -220,11 +223,6 @@
                         productCode,
                         paymentProofUrl: paymentProofFile.$id
                     });
-
-
-                    // Upload payment proof
-                    const storage = new Appwrite.Storage(client);
-                    const paymentProofFile = await storage.createFile('66bf6ffe0022bf78fe4c', 'unique()', paymentProof);
 
                     // Show success message and close the form
                     alert('پرداخت انجام شد');
