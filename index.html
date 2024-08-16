@@ -9,16 +9,11 @@
     <title>Info graphy</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-    </style>
-    <style>
-        /* Reset default margin and padding */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* Basic Styling */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: #f4f4f4;
@@ -36,16 +31,11 @@
             font-optical-sizing: auto;
             font-weight: 'weight';
             font-style: normal;
-
         }
-
-        /* Dark Theme */
         body.dark-theme {
             background-color: #121212;
             color: #e0e0e0;
         }
-
-        /* Header */
         .header {
             width: 100%;
             background-color: rgba(29, 29, 218, 0.332);
@@ -59,8 +49,6 @@
             position: fixed;
             top: 0;
         }
-
-        /* Theme Switcher */
         #theme-switcher {
             position: absolute;
             top: 5px;
@@ -74,26 +62,21 @@
             transition: background-color 0.3s ease, color 0.3s ease;
             font-size: xx-large;
         }
-
         body.dark-theme #theme-switcher {
             background-color: #bb86fc00;
             color: #121212;
         }
-
-        /* Container */
         .container {
             padding: 10px 0px;
             width: 100%;
             margin-top: 50px;            
-            background: rgba( 87, 86, 213, 0.15 );
+            background: rgba(87, 86, 213, 0.15);
             box-shadow: 0 8px 50px 0 rgba(31, 38, 135, 0.471);
-            backdrop-filter: blur( 2.5px );
-            -webkit-backdrop-filter: blur( 2.5px );
+            backdrop-filter: blur(2.5px);
+            -webkit-backdrop-filter: blur(2.5px);
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.293);
         }
-
-        /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 15px;
@@ -108,9 +91,8 @@
             border-radius: 50px;
             box-shadow: 0 8px 50px 0 rgba(161, 167, 255, 0.471);;
             z-index: 1000;
-            backdrop-filter: blur( 2.5px )
+            backdrop-filter: blur(2.5px);
         }
-
         .bottom-nav button {
             background: none;
             border: none;
@@ -120,27 +102,21 @@
             padding: 5px;
             transition: transform 0.5s ease;
         }
-
         .bottom-nav button:hover {
             transform: scale(1.2);
             background-color: #bdb7ff3c;
             border-radius: 20px;
         }
-
-        /* Section Styling */
         .section {
             display: none;
             opacity: 0;
             animation: fadeOut 0.5s ease;
         }
-
         .section.active {
             display: block;
             opacity: 1;
             animation: fadeIn 0.5s ease;
         }
-
-        /* Keyframes for animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -151,7 +127,6 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes fadeOut {
             from {
                 opacity: 1;
@@ -162,7 +137,6 @@
                 transform: translateY(50px);
             }
         }
-
         img {
             border-radius: 50%;
             width: 150px;
@@ -172,119 +146,125 @@
             margin-top: 20px;
             box-shadow: 0 0px 30px rgba(255, 255, 255, 0.232);
         }
-
-        /* Responsive Design */
         @media (max-width: 600px) {
             .header {
                 font-size: 1.2em;
             }
-
             .bottom-nav button {
                 font-size: 20px;
                 padding: 2px;
             }
         }
-        p{
+        p {
             font-size: large;
         }
-        #tel{
-        background-color: #3898ff;
-        border: none;
-        width: 1000px;
-        max-width: 150px;
-        height: 30px;
-        border-radius: 20px;
-        margin-top: 30px;
-        cursor: pointer;
-        display: block;
-        margin: 15px auto 0px auto;
+        #tel {
+            background-color: #3898ff;
+            border: none;
+            width: 1000px;
+            max-width: 150px;
+            height: 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+            cursor: pointer;
+            display: block;
+            margin: 15px auto 0px auto;
         }
-
-    .hero {
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      padding: 0 10%;
-      background: transparent;
-      color: #ffffff;
-    }
-
-    .hero .text-content {
-      max-width: 50%;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      margin: 20px 0;
-      font-size: 18px;
-      color: #cccccc;
-    }
-
-    .hero .cta-button {
-      padding: 12px 24px;
-      background: #e91e63;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 4px;
-      transition: all 0.3s;
-    }
-
-    .cta-button:hover {
-      background: #c2185b;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      padding: 60px 10%;
-      background: transparent;
-    }
-
-    .product-card {
-      background: #333333b0;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
-    }
-
-    .product-card img {
-      width: 100%;
-      border-radius: 4px;
-    }
-
-    .product-card h3 {
-      margin: 20px 0;
-      font-size: 22px;
-      color: #ffffff;
-    }
-
-    .product-card p {
-      color: #cccccc;
-      font-size: 16px;
-    }
-
-    .product-card .price {
-      font-size: 20px;
-      color: #e91e63;
-      font-weight: 700;
-    }
-
-    .prom{
-        width: 100%;
-        height:auto;
-    }
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background: transparent;
+            color: #ffffff;
+        }
+        .hero .text-content {
+            max-width: 50%;
+        }
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+        }
+        .hero p {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #cccccc;
+        }
+        .hero .cta-button {
+            padding: 12px 24px;
+            background: #e91e63;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .cta-button:hover {
+            background: #c2185b;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 60px 10%;
+            background: transparent;
+        }
+        .product-card {
+            background: #333333b0;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 4px;
+        }
+        .product-card h3 {
+            margin: 20px 0;
+            font-size: 22px;
+            color: #ffffff;
+        }
+        .product-card p {
+            color: #cccccc;
+            font-size: 16px;
+        }
+        .product-card .price {
+            font-size: 20px;
+            color: #e91e63;
+            font-weight: 700;
+        }
+        .prom {
+            width: 100%;
+            height: auto;
+        }
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-overlay img {
+            width: 100px;
+            height: 100px;
+        }
     </style>
 </head>
 <body>
@@ -294,6 +274,11 @@
         RND2131 Platform
         <!-- Theme Switcher -->
         <button id="theme-switcher">☀️</button>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <img src="https://media.tenor.com/rtY9m7EokSYAAAAM/cat-loading.gif" alt="Loading..." style="width: 60%;height: auto;border-radius: 15px;"> <!-- Replace with your loading spinner URL -->
     </div>
 
     <!-- Container for content -->
@@ -306,19 +291,12 @@
             <p style="margin-bottom: 10px;">Frameworks: React & ReactNative, Vue, Angular, Ionic, Flutter, Django & more...</p>
         </div>
 
-
-
-
         <div id="section2" class="section">
             <h1 style="margin-top: 50px; margin-bottom: 50px;">⭐SHOP⭐</h1>
-            <iframe src="betshop.html" frameborder="0" style="height: 100vh;width: 100%; border-radius: 15px;margin-bottom: 50px; margin-left: 0px;margin-right: 0;
-            max-width: 1500px;
-            "
-            
+            <iframe id="shop-iframe" src="betshop.html" frameborder="0" style="height: 100vh;width: 100%; border-radius: 15px;margin-bottom: 50px; margin-left: 0px;margin-right: 0;
+            max-width: 1500px;"
             ></iframe>
         </div>
-
-
 
         <div id="section3" class="section">
             <p style="margin-top: 50px;">شماره حساب : </p>
@@ -346,24 +324,19 @@
     </div>
 
     <script>
-
-
+        // Function to copy text
         function copy(){
             navigator.clipboard.writeText(document.getElementById('Code').innerText);
             window.alert('code copied');
             window.location.href = "shop.html";
         }
 
-
         // Theme Switcher
         const themeSwitcher = document.getElementById('theme-switcher');
-    
-        // Check localStorage for saved theme and apply it
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             document.body.classList.add(savedTheme);
         }
-    
         themeSwitcher.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
             if (document.body.classList.contains('dark-theme')) {
@@ -372,40 +345,49 @@
                 localStorage.removeItem('theme');
             }
         });
-    
+
         // Function to show the selected section
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
                 section.classList.remove('active');
             });
-    
             const activeSection = document.getElementById(sectionId);
             activeSection.classList.add('active');
-    
-            // Save the currently active section to localStorage
             localStorage.setItem('activeSection', sectionId);
         }
-    
-        // Check localStorage for saved section and display it
         const savedSection = localStorage.getItem('activeSection');
         if (savedSection) {
             showSection(savedSection);
         } else {
-            showSection('section1'); // Default section if nothing is saved
+            showSection('section1');
         }
 
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js')
             .then(() => {
-            console.log('Service Worker registered successfully.');
-        })
-        .catch(error => {
-            console.error('Service Worker registration failed:', error);
-        });
-    }
+                console.log('Service Worker registered successfully.');
+            })
+            .catch(error => {
+                console.error('Service Worker registration failed:', error);
+            });
+        }
 
-</script>
+        // Handling iframe loading
+        const iframe = document.getElementById('shop-iframe');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        
+        iframe.addEventListener('load', () => {
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+            }, 5000); // Hide overlay after 5 seconds even if iframe hasn't finished loading
+        });
+
+        // Optionally, you might want to hide overlay immediately after iframe loads
+        // iframe.addEventListener('load', () => {
+        //     loadingOverlay.classList.add('hidden');
+        // });
+    </script>
 
 </body>
 </html>
