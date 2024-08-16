@@ -1,12 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appwrite Products</title>
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:transparent;
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: var(--title-color);
+            margin: 20px 0;
+            font-size: 2.5rem;
+        }
+
+        #theme-toggle {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 0px;
+            position: fixed;
+            top: 5%;
+            left: 5%;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #products-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .product-item {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-item img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            object-fit: cover;
+            max-height: 200px;
+        }
+
+        .product-item h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--title-color);
+        }
+
+        .product-item p {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--text-color-light);
+        }
+
+        .product-item .price {
+            font-size: 1.25rem;
+            margin-top: 10px;
+            font-weight: 700;
+            color: var(--price-color);
+        }
+
+        .product-item .availability {
+            margin-top: 5px;
+            font-weight: 500;
+            color: var(--availability-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            #products-list {
+                width: 90%;
+            }
+
+            .product-item h2 {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Light theme variables */
+        :root {
+            --text-color: #333;
+            --text-color-light: #555;
+            --card-bg: #ffffff;
+            --title-color: #1a1a1a;
+            --border-color: #ddd;
+            --price-color: #009688;
+            --availability-color: #388e3c;
+        }
+
+        /* Dark theme variables */
+        [data-theme="dark"] {
+            --text-color: #e0e0e0;
+            --text-color-light: #b3b3b3;
+            --card-bg: #1e1e1e;
+            --title-color: #ffffff;
+            --border-color: #333;
+            --price-color: #80cbc4;
+            --availability-color: #81c784;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Products Collection</h1>
+    <button id="theme-toggle" >Switch to Dark Theme</button>
     <div id="products-list">
         <!-- The product items will be displayed here -->
     </div>
@@ -41,10 +174,13 @@
                     const productItem = document.createElement('div');
                     productItem.className = 'product-item';
 
-                    // Assuming your documents have 'name' and 'description' fields
+                    // Assuming your documents have 'name', 'description', 'imageUrl', 'availability', and 'price' fields
                     productItem.innerHTML = `
+                        <img src="${product.imageUrl}" alt="${product.name}">
                         <h2>${product.name}</h2>
                         <p>${product.description}</p>
+                        <p class="availability">${product.availability ? 'In Stock' : 'Out of Stock'}</p>
+                        <p class="price">$${product.price.toFixed(2)}</p>
                     `;
 
                     // Append the product item to the products list
@@ -55,8 +191,23 @@
             }
         }
 
+        // Theme switching functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeToggleBtn.textContent = 'Switch to Dark Theme';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeToggleBtn.textContent = 'Switch to Light Theme';
+            }
+        });
+
         // Call the function to fetch and display products when the page loads
         getProducts();
     </script>
 </body>
+
 </html>
