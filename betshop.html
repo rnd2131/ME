@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appwrite Products</title>
-    <!-- Include Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset some basic elements */
+        /* Basic styles */
         body, h2, p {
             margin: 0;
             padding: 0;
@@ -16,74 +15,36 @@
             box-sizing: border-box;
         }
 
-        /* General body styling */
         body {
             background-color: transparent;
             padding: 20px;
         }
 
-        /* Products list container */
+        /* Product grid */
         #products-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
 
-        /* Individual product item */
         .product-item {
-            background: rgba(0, 0, 0, 0.198);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
             padding: 15px;
-            transition: transform 0.3s ease;
             text-align: center;
-            margin: 10px;
-            height: fit-content;
+            transition: transform 0.3s ease;
         }
 
         .product-item:hover {
             transform: translateY(-10px);
         }
 
-        /* Product image styling */
         .product-img {
             width: 100%;
-            height: auto;
             border-radius: 8px;
             margin-bottom: 15px;
         }
 
-        /* Product name styling */
-        .product-item h2 {
-            font-size: 1.2em;
-            color: #1900ff;
-            margin-bottom: 10px;
-        }
-
-        /* Product description styling */
-        .product-item p {
-            color: #55ff00;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-
-        /* Availability styling */
-        .availability {
-            color: rgb(255, 162, 0);
-            font-weight: bold;
-        }
-
-        /* Price styling */
-        .price {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #700000;
-        }
-
-        /* Form container styling */
         #purchase-form-container {
             display: none;
             position: fixed;
@@ -117,27 +78,8 @@
             background-color: #1900ff;
             color: white;
             cursor: pointer;
-            border: none;
         }
 
-        #purchase-form button:hover {
-            background-color: #0000cc;
-        }
-
-        /* Media query for mobile responsiveness */
-        @media (max-width: 600px) {
-            #products-list {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            .product-item {
-                margin: 10px 0;
-                padding: 10px;
-            }
-        }
-
-        /* Form slide-in animation */
         #purchase-form-container.active {
             transform: translateY(0%);
         }
@@ -149,12 +91,8 @@
 </head>
 
 <body>
-    <!-- Product List -->
-    <div id="products-list">
-        <!-- The product items will be displayed here -->
-    </div>
+    <div id="products-list"></div>
 
-    <!-- Purchase Form -->
     <div id="purchase-form-container" class="hidden">
         <div id="purchase-form">
             <h2>اطلاعات خرید</h2>
@@ -170,14 +108,13 @@
     <script>
         const client = new Appwrite.Client()
             .setEndpoint('https://cloud.appwrite.io/v1')
-            .setProject('66bf2f0c001ed3fc6a5e');
+            .setProject('YOUR_PROJECT_ID');
 
         const databases = new Appwrite.Databases(client);
-        const databaseId = 'products';
-        const collectionId = '66bf3028000c0a34101e';
-        const purchaseCollectionId = '66bf3028000c0a34101f'; // Collection ID for purchases
+        const databaseId = 'YOUR_DATABASE_ID';
+        const collectionId = 'YOUR_COLLECTION_ID';
+        const purchaseCollectionId = 'YOUR_PURCHASE_COLLECTION_ID';
 
-        // Function to fetch and display the collection
         async function getProducts() {
             try {
                 const response = await databases.listDocuments(databaseId, collectionId);
@@ -193,8 +130,7 @@
                         <p id="cod" dir="rtl">کد محصول :${product.description}</p>
                         <p id="vb">${product.availability}</p>
                         <p class="price">تومان${product.price}</p>
-                        <button onclick="openPurchaseForm('${product.description}')"
-                            style="border-radius: 20px;background:#00000075;color: azure;border: none; width: 50%;padding: 10px; margin-top: 20px; cursor:pointer;">BUY</button>
+                        <button onclick="openPurchaseForm('${product.description}')">BUY</button>
                     `;
 
                     productsList.appendChild(productItem);
@@ -204,7 +140,6 @@
             }
         }
 
-        // Function to open the purchase form with product details
         function openPurchaseForm(productCode) {
             document.getElementById('product-code').value = productCode;
             const formContainer = document.getElementById('purchase-form-container');
@@ -212,7 +147,6 @@
             formContainer.classList.add('active');
         }
 
-        // Function to handle the purchase submission
         async function submitPurchase() {
             const buyerName = document.getElementById('buyer-name').value;
             const buyerAddress = document.getElementById('buyer-address').value;
@@ -220,14 +154,12 @@
 
             if (buyerName && buyerAddress && productCode) {
                 try {
-                    // Create a purchase document
                     await databases.createDocument(databaseId, purchaseCollectionId, 'unique()', {
                         buyerName,
                         buyerAddress,
                         productCode
                     });
 
-                    // Show success message and close the form
                     alert('پرداخت انجام شد');
                     closePurchaseForm();
                 } catch (error) {
@@ -238,14 +170,12 @@
             }
         }
 
-        // Function to close the purchase form
         function closePurchaseForm() {
             const formContainer = document.getElementById('purchase-form-container');
             formContainer.classList.remove('active');
             formContainer.classList.add('hidden');
         }
 
-        // Call the function to fetch and display products when the page loads
         getProducts();
     </script>
 </body>
