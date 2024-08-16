@@ -94,6 +94,9 @@
                 margin: 10px 0; /* Top and bottom margin for vertical spacing */
                 padding: 10px;
             }
+            #vb{
+              color:#700000
+            }
         }
     </style>
 </head>
@@ -106,7 +109,7 @@
           <img src="https://th.bing.com/th/id/R.d4878d105a32f20ec4921fd62e6bc2b6?rik=FxbbJaT86wdX6g&pid=ImgRaw&r=0" alt="bb" class="product-img">
           <h2>Product Name</h2>
           <p id="cod">Product Description</p>
-          <p class="availability">Available</p>
+          <p id="vb">Available</p>
           <p class="price">تومان1000</p>
           <button onclick="copy()" style="border-radius: 20px;background:#00000075;color: azure;border: none; width: 50%;padding: 10px; margin-top: 20px; cursor:pointer;">BUY</button>
       </div>
@@ -154,7 +157,7 @@
                         <img src="${product.imageUrl}" alt="${product.name}" class="product-img">
                         <h2>${product.name}</h2>
                         <p id="cod">${product.description}</p>
-                        <p class="availability">${product.availability}</p>
+                        <p id="vb">${product.availability}</p>
                         <p class="price">تومان${product.price.toFixed(3)}</p>
                     `;
 
