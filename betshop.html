@@ -32,16 +32,16 @@
         /* Individual product item */
         .product-item {
             background: rgba(0, 0, 0, 0.198);
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 4px );
-            -webkit-backdrop-filter: blur( 4px );
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             border-radius: 10px;
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            border: 1px solid rgba(255, 255, 255, 0.18);
             padding: 15px;
             transition: transform 0.3s ease;
             text-align: center;
             margin: 10px;
-            height:fit-content;
+            height: fit-content;
         }
 
         .product-item:hover {
@@ -87,22 +87,21 @@
         #purchase-form-container {
             display: none;
             position: fixed;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
+            background-color: white;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
             z-index: 10;
+            transition: transform 0.3s ease-in-out;
         }
 
         #purchase-form {
-            background-color: white;
             padding: 20px;
-            border-radius: 8px;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         #purchase-form input,
@@ -137,6 +136,15 @@
                 padding: 10px;
             }
         }
+
+        /* Form slide-in animation */
+        #purchase-form-container.active {
+            transform: translateY(0%);
+        }
+
+        #purchase-form-container.hidden {
+            transform: translateY(100%);
+        }
     </style>
 </head>
 
@@ -147,13 +155,12 @@
     </div>
 
     <!-- Purchase Form -->
-    <div id="purchase-form-container">
+    <div id="purchase-form-container" class="hidden">
         <div id="purchase-form">
             <h2>اطلاعات خرید</h2>
             <input type="text" id="buyer-name" placeholder="نام شما">
             <input type="text" id="buyer-address" placeholder="آدرس شما">
             <input type="text" id="product-code" placeholder="کد محصول" readonly>
-            <input type="file" id="payment-proof" accept="image/*">
             <button onclick="submitPurchase()">پرداخت</button>
         </div>
     </div>
@@ -200,7 +207,9 @@
         // Function to open the purchase form with product details
         function openPurchaseForm(productCode) {
             document.getElementById('product-code').value = productCode;
-            document.getElementById('purchase-form-container').style.display = 'flex';
+            const formContainer = document.getElementById('purchase-form-container');
+            formContainer.classList.remove('hidden');
+            formContainer.classList.add('active');
         }
 
         // Function to handle the purchase submission
@@ -208,31 +217,32 @@
             const buyerName = document.getElementById('buyer-name').value;
             const buyerAddress = document.getElementById('buyer-address').value;
             const productCode = document.getElementById('product-code').value;
-            const paymentProof = document.getElementById('payment-proof').files[0];
 
-            if (buyerName && buyerAddress && productCode && paymentProof) {
+            if (buyerName && buyerAddress && productCode) {
                 try {
-                    // Upload payment proof
-                    const storage = new Appwrite.Storage(client);
-                    const paymentProofFile = await storage.createFile('66bf6ffe0022bf78fe4c', 'unique()', paymentProof);
-
                     // Create a purchase document
                     await databases.createDocument(databaseId, purchaseCollectionId, 'unique()', {
                         buyerName,
                         buyerAddress,
-                        productCode,
-                        paymentProofUrl: paymentProofFile.$id
+                        productCode
                     });
 
                     // Show success message and close the form
                     alert('پرداخت انجام شد');
-                    document.getElementById('purchase-form-container').style.display = 'none';
+                    closePurchaseForm();
                 } catch (error) {
                     console.error('Failed to submit purchase:', error);
                 }
             } else {
                 alert('لطفاً تمام اطلاعات را وارد کنید');
             }
+        }
+
+        // Function to close the purchase form
+        function closePurchaseForm() {
+            const formContainer = document.getElementById('purchase-form-container');
+            formContainer.classList.remove('active');
+            formContainer.classList.add('hidden');
         }
 
         // Call the function to fetch and display products when the page loads
