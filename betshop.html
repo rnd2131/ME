@@ -153,7 +153,6 @@
             <input type="text" id="buyer-name" placeholder="نام شما">
             <input type="text" id="buyer-address" placeholder="آدرس شما">
             <input type="text" id="product-code" placeholder="کد محصول" readonly>
-            <input type="file" id="payment-proof" accept="image/*">
             <button onclick="submitPurchase()">پرداخت</button>
         </div>
     </div>
@@ -208,20 +207,15 @@
             const buyerName = document.getElementById('buyer-name').value;
             const buyerAddress = document.getElementById('buyer-address').value;
             const productCode = document.getElementById('product-code').value;
-            const paymentProof = document.getElementById('payment-proof').files[0];
 
             if (buyerName && buyerAddress && productCode && paymentProof) {
                 try {
-                    // Upload payment proof
-                    const storage = new Appwrite.Storage(client);
-                    const paymentProofFile = await storage.createFile('66bf6ffe0022bf78fe4c', 'unique()', paymentProof);
 
                     // Create a purchase document
                     await databases.createDocument(databaseId, purchaseCollectionId, 'unique()', {
                         buyerName,
                         buyerAddress,
-                        productCode,
-                        paymentProofUrl: paymentProofFile.$id
+                        productCode
                     });
 
                     // Show success message and close the form
