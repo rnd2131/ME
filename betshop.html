@@ -212,9 +212,6 @@
 
             if (buyerName && buyerAddress && productCode && paymentProof) {
                 try {
-                    // Upload payment proof
-                    const storage = new Appwrite.Storage(client);
-                    const paymentProofFile = await storage.createFile('your-bucket-id', 'unique()', paymentProof);
 
                     // Create a purchase document
                     await databases.createDocument(databaseId, purchaseCollectionId, 'unique()', {
@@ -223,6 +220,11 @@
                         productCode,
                         paymentProofUrl: paymentProofFile.$id
                     });
+
+
+                    // Upload payment proof
+                    const storage = new Appwrite.Storage(client);
+                    const paymentProofFile = await storage.createFile('your-bucket-id', 'unique()', paymentProof);
 
                     // Show success message and close the form
                     alert('پرداخت انجام شد');
