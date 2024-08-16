@@ -152,6 +152,7 @@
             <h2>اطلاعات خرید</h2>
             <input type="text" id="buyer-name" placeholder="نام شما">
             <input type="text" id="buyer-address" placeholder="آدرس شما">
+            <input type="number" id="quantity" placeholder="تعداد" min="1" value="1"> <!-- Input for quantity -->
             <input type="text" id="product-code" placeholder="کد محصول" readonly>
             <button onclick="submitPurchase()">پرداخت</button>
         </div>
@@ -206,16 +207,17 @@
         async function submitPurchase() {
             const buyerName = document.getElementById('buyer-name').value;
             const buyerAddress = document.getElementById('buyer-address').value;
+            const quantity = document.getElementById('quantity').value; // Get quantity value
             const productCode = document.getElementById('product-code').value;
 
-            if (buyerName && buyerAddress && productCode) {
+            if (buyerName && buyerAddress && productCode && quantity > 0) {
                 try {
-
                     // Create a purchase document
                     await databases.createDocument(databaseId, purchaseCollectionId, 'unique()', {
                         buyerName,
                         buyerAddress,
-                        productCode
+                        productCode,
+                        quantity // Include quantity in the document
                     });
 
                     // Show success message and close the form
