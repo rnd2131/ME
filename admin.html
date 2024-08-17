@@ -308,30 +308,31 @@
 
         // Function to add a new product
         async function addProduct() {
-            const name = document.getElementById('product-name').value;
-            const description = document.getElementById('product-description').value;
-            const availability = document.getElementById('product-availability').value;
-            const price = document.getElementById('product-price').value;
-            const imageUrl = document.getElementById('product-image-url').value;
+    const name = document.getElementById('product-name').value;
+    const description = document.getElementById('product-description').value;
+    const availability = document.getElementById('product-availability').value;
+    const price = document.getElementById('product-price').value;
+    const imageUrl = document.getElementById('product-image-url').value;
 
-            if (name && description && availability && price && imageUrl) {
-                try {
-                    await databases.createDocument(databaseId, collectionId, 'unique()', {
-                        name,
-                        description,
-                        availability,
-                        price,
-                        imageUrl
-                    });
-                    fetchProducts();
-                    alert('محصول با موفقیت اضافه شد!');
-                } catch (error) {
-                    console.error('عدم موفقیت در افزودن محصول:', error);
-                }
-            } else {
-                alert('لطفاً تمامی فیلدها را پر کنید.');
-            }
+    if (name && description && availability && price && imageUrl) {
+        try {
+            await databases.createDocument(databaseId, collectionId, 'unique()', {
+                name,
+                description,
+                availability,
+                price,
+                imageUrl
+            });
+            fetchProducts();
+            alert('محصول با موفقیت اضافه شد!');
+        } catch (error) {
+            console.error('عدم موفقیت در افزودن محصول:', error);
         }
+    } else {
+        alert('لطفاً تمامی فیلدها را پر کنید.');
+    }
+}
+
 
         // Function to delete a product
         async function deleteProduct(productId) {
