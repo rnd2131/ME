@@ -47,6 +47,20 @@ async function loadPurchases() {
     }
 }
 
+// Function to create a new product
+async function createProduct(name, price) {
+    try {
+        const newProduct = await database.createDocument('66bf3028000c0a34101e', 'unique()', {
+            name: name,
+            price: price
+        });
+        alert('Product added successfully!');
+        location.reload(); // Refresh the page to update the table
+    } catch (error) {
+        console.error('Failed to add product', error);
+    }
+}
+
 // Function to delete a product
 async function deleteProduct(productId) {
     try {
@@ -68,6 +82,14 @@ async function deletePurchase(purchaseId) {
         console.error('Failed to delete purchase', error);
     }
 }
+
+// Event listener for the product form submission
+document.getElementById('productForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = document.getElementById('productName').value;
+    const price = document.getElementById('productPrice').value;
+    createProduct(name, price);
+});
 
 // Load products and purchases when the page loads
 window.onload = () => {
