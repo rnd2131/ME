@@ -361,31 +361,31 @@
 
         // Function to save changes to the edited product
         async function saveProductChanges() {
-            const name = document.getElementById('edit-product-name').value;
-            const description = document.getElementById('edit-product-description').value;
-            const availability = document.getElementById('edit-product-availability').value;
-            const price = document.getElementById('edit-product-price').value;
-            const imageUrl = document.getElementById('edit-product-image-url').value;
+    const name = document.getElementById('edit-product-name').value.trim();
+    const description = document.getElementById('edit-product-description').value.trim();
+    const availability = document.getElementById('edit-product-availability').value.trim();
+    const price = parseFloat(document.getElementById('edit-product-price').value.trim());
+    const imageUrl = document.getElementById('edit-product-image-url').value.trim();
 
-            if (name && description && availability && price && imageUrl) {
-                try {
-                    await databases.updateDocument(databaseId, collectionId, currentProductId, {
-                        name,
-                        description,
-                        availability,
-                        price,
-                        imageUrl
-                    });
-                    fetchProducts();
-                    closeEditProductPopup();
-                    alert('Product updated successfully!');
-                } catch (error) {
-                    console.error('Failed to update product:', error);
-                }
-            } else {
-                alert('Please fill in all fields.');
-            }
+    if (name && description && availability && price && imageUrl) {
+        try {
+            await databases.updateDocument(databaseId, collectionId, currentProductId, {
+                name,
+                description,
+                availability,
+                price,
+                imageUrl
+            });
+            fetchProducts(); // Refresh the product list after update
+            closeEditProductPopup(); // Close the popup
+            alert('Product updated successfully!');
+        } catch (error) {
+            console.error('Failed to update product:', error);
         }
+    } else {
+        alert('Please fill in all fields.');
+    }
+}
 
         // Function to fetch and display purchase orders
         async function fetchPurchases() {
