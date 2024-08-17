@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <style>
+        /* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e2f;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Header */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff6b6b;
+}
+
+/* Table Styles */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #2a2a40;
+}
+
+thead th {
+    padding: 15px;
+    text-align: left;
+    font-size: 1.2rem;
+    color: #f0f0f0;
+}
+
+tbody tr {
+    background-color: #29293d;
+    transition: background-color 0.3s;
+}
+
+tbody tr:hover {
+    background-color: #36364e;
+}
+
+tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #3d3d57;
+    font-size: 1rem;
+}
+
+tbody td:last-child {
+    text-align: center;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Button Styles */
+button[onclick*="deleteProduct"], button[onclick*="deletePurchase"] {
+    background-color: #ff6b6b;
+    color: #fff;
+}
+
+button[onclick*="editProduct"], button[onclick*="editPurchase"] {
+    background-color: #4db6ac;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    thead th, tbody td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+    </style>
+    <h1>Admin Panel for Products and Purchases</h1>
+    <div>
+        <h2>Products</h2>
+        <table id="productsTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Product rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h2>Purchases</h2>
+        <table id="purchasesTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product ID</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Purchase rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@10"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
