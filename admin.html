@@ -306,12 +306,21 @@
             }
         }
 
-        // Function to add a new product
-        async function addProduct() {
+// Function to clear form fields after adding a product
+function clearFormFields() {
+    document.getElementById('product-name').value = '';
+    document.getElementById('product-description').value = '';
+    document.getElementById('product-availability').value = '';
+    document.getElementById('product-price').value = '';
+    document.getElementById('product-image-url').value = '';
+}
+
+// Modified addProduct function
+async function addProduct() {
     const name = document.getElementById('product-name').value;
     const description = document.getElementById('product-description').value;
     const availability = document.getElementById('product-availability').value;
-    const price = document.getElementById('product-price').value.trim(); // نگه‌داشتن مقدار به صورت رشته
+    const price = document.getElementById('product-price').value.trim();
     const imageUrl = document.getElementById('product-image-url').value;
 
     if (name && description && availability && price && imageUrl) {
@@ -320,10 +329,11 @@
                 name,
                 description,
                 availability,
-                price, // ارسال به صورت رشته
+                price,
                 imageUrl
             });
             fetchProducts();
+            clearFormFields(); // Call the function to clear form fields
             alert('محصول با موفقیت اضافه شد!');
         } catch (error) {
             console.error('عدم موفقیت در افزودن محصول:', error);
