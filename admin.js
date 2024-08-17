@@ -1,11 +1,11 @@
-// Import Appwrite SDK
-const sdk = new Appwrite.Client();
+// Import and configure the Appwrite SDK
+const client = new Appwrite.Client();
 
-sdk
+client
     .setEndpoint('https://cloud.appwrite.io/v1') // Set your Appwrite endpoint
     .setProject('66bf2f0c001ed3fc6a5e'); // Replace with your project ID
 
-const database = new Appwrite.Databases(sdk, 'products'); // Replace with your database ID
+const database = new Appwrite.Databases(client, 'products'); // Replace with your database ID
 
 // Function to load and display products
 async function loadProducts() {
@@ -18,8 +18,8 @@ async function loadProducts() {
             row.insertCell(1).innerText = product.price;
             const actionsCell = row.insertCell(2);
             actionsCell.innerHTML = `
-                <button onclick="deleteProduct('${product.name}')">Delete</button>
-                <button onclick="editProduct('${product.name}')">Edit</button>
+                <button onclick="deleteProduct('${product.$id}')">Delete</button>
+                <button onclick="editProduct('${product.$id}')">Edit</button>
             `;
         });
     } catch (error) {
@@ -38,8 +38,8 @@ async function loadPurchases() {
             row.insertCell(1).innerText = purchase.quantity;
             const actionsCell = row.insertCell(2);
             actionsCell.innerHTML = `
-                <button onclick="deletePurchase('${purchase.name}')">Delete</button>
-                <button onclick="editPurchase('${purchase.name}')">Edit</button>
+                <button onclick="deletePurchase('${purchase.$id}')">Delete</button>
+                <button onclick="editPurchase('${purchase.$id}')">Edit</button>
             `;
         });
     } catch (error) {
