@@ -353,10 +353,10 @@
             }, 5000); // Hide overlay after 5 seconds even if iframe hasn't finished loading
         });
 
-        // Optionally, you might want to hide overlay immediately after iframe loads
-        // iframe.addEventListener('load', () => {
-        //     loadingOverlay.classList.add('hidden');
-        // });
+
+        iframe.addEventListener('load', () => {
+             loadingOverlay.classList.add('hidden');
+        });
     </script>
 
 </body>
