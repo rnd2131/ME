@@ -14,13 +14,12 @@ async function loadProducts() {
         const productsTable = document.getElementById('productsTable').getElementsByTagName('tbody')[0];
         products.documents.forEach((product) => {
             const row = productsTable.insertRow();
-            row.insertCell(0).innerText = product.$id;
-            row.insertCell(1).innerText = product.name;
-            row.insertCell(2).innerText = product.price;
+            row.insertCell(0).innerText = product.name;
+            row.insertCell(1).innerText = product.price;
             const actionsCell = row.insertCell(3);
             actionsCell.innerHTML = `
-                <button onclick="deleteProduct('${product.$id}')">Delete</button>
-                <button onclick="editProduct('${product.$id}')">Edit</button>
+                <button onclick="deleteProduct('${product.name}')">Delete</button>
+                <button onclick="editProduct('${product.name}')">Edit</button>
             `;
         });
     } catch (error) {
@@ -35,13 +34,12 @@ async function loadPurchases() {
         const purchasesTable = document.getElementById('purchasesTable').getElementsByTagName('tbody')[0];
         purchases.documents.forEach((purchase) => {
             const row = purchasesTable.insertRow();
-            row.insertCell(0).innerText = purchase.$id;
-            row.insertCell(1).innerText = purchase.product_id;
+            row.insertCell(1).innerText = purchase.name;
             row.insertCell(2).innerText = purchase.quantity;
             const actionsCell = row.insertCell(3);
             actionsCell.innerHTML = `
-                <button onclick="deletePurchase('${purchase.$id}')">Delete</button>
-                <button onclick="editPurchase('${purchase.$id}')">Edit</button>
+                <button onclick="deletePurchase('${purchase.name}')">Delete</button>
+                <button onclick="editPurchase('${purchase.name}')">Edit</button>
             `;
         });
     } catch (error) {
