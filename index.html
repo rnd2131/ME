@@ -41,17 +41,16 @@
             background-color: rgba(29, 29, 218, 0.332);
             color: white;
             padding: 15px 20px;
-            text-align: center;
+            text-align: left;
             font-size: 1.5em;
             border-radius: 0 0 20px 20px;
-            box-shadow: 0 0px 50px rgba(202, 205, 255, 0.471);
             z-index: 1000;
             position: fixed;
             top: 0;
         }
         #theme-switcher {
             position: absolute;
-            top: 5px;
+            top: 17px;
             right: 20px;
             background-color: #03dac500;
             color: #121212;
@@ -71,41 +70,25 @@
             width: 100%;
             margin-top: 50px;            
             background: rgba(87, 86, 213, 0.15);
-            box-shadow: 0 8px 50px 0 rgba(31, 38, 135, 0.471);
             backdrop-filter: blur(2.5px);
             -webkit-backdrop-filter: blur(2.5px);
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.293);
         }
-        .bottom-nav {
-            position: fixed;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 75%;
-            max-width: 800px;
-            background-color: rgba(29, 29, 218, 0.906);
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 30px;
-            border-radius: 50px;
-            box-shadow: 0 8px 50px 0 rgba(161, 167, 255, 0.471);;
-            z-index: 1000;
-            backdrop-filter: blur(2.5px);
-        }
-        .bottom-nav button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            padding: 5px;
-            transition: transform 0.5s ease;
-        }
-        .bottom-nav button:hover {
-            transform: scale(1.2);
-            background-color: #bdb7ff3c;
+
+        .nsv-b{
+            color: #cccccc;
+            background-color: #00000034;
+            position: relative;
+            width: 70px;
             border-radius: 20px;
+            height:fit-content;
+            border: none;
+            display:inline-flexbox;
+            margin: 0px;
+            left: 10px;
+            cursor: pointer;
+            font-size: xx-large;
         }
         .section {
             display: none;
@@ -139,12 +122,11 @@
         }
         img {
             border-radius: 50%;
-            width: 150px;
-            height: 150px;
+            width: fit-content;
+            height: fit-content;
             object-fit: cover;
             margin-bottom: 50px;
             margin-top: 20px;
-            box-shadow: 0 0px 30px rgba(255, 255, 255, 0.232);
         }
         @media (max-width: 600px) {
             .header {
@@ -253,17 +235,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 2000;
-            transition: opacity 0.5s ease;
+            z-index: 20000;
+            transition: opacity 1s ease;
             opacity: 1;
         }
         .loading-overlay.hidden {
             opacity: 0;
             pointer-events: none;
         }
-        .loading-overlay img {
-            width: 100px;
-            height: 100px;
+        #hh{
+            width: 30px;
+            height: auto;
         }
     </style>
 </head>
@@ -271,25 +253,19 @@
 
     <!-- Header -->
     <div class="header">
-        RND2131 Platform
+        <button onclick="showSection('section2')" class="nsv-b" style="margin-left: 2%; font-size: 35px;">🛒</button>
+        <button onclick="showSection('section3')" class="nsv-b" style="margin-left: 5%; font-size: 35px;">💲</button>
         <!-- Theme Switcher -->
         <button id="theme-switcher">☀️</button>
     </div>
 
     <!-- Loading Overlay -->
     <div id="loading-overlay" class="loading-overlay">
-        <img src="https://media.tenor.com/rtY9m7EokSYAAAAM/cat-loading.gif" alt="Loading..." style="width: 60%;height: auto;border-radius: 15px;"> <!-- Replace with your loading spinner URL -->
+        <img id="hh" src="gif-animations-replace-loading-screen-14.gif" alt="Loading..." style="width: 60%;height: auto;border-radius: 15px;"> <!-- Replace with your loading spinner URL -->
     </div>
 
     <!-- Container for content -->
     <div class="container"> 
-        <div id="section1" class="section active" >
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQroD-IvoEk3EQ3glzMQccCOUxMCgZffKbPvOhPhIjFBmapf537ahHkddNVZgOJ2qaHgU0&usqp=CAU" alt="profile">
-            <h1 style="margin-bottom: 30px;">NAME : RADMAN</h1>
-            <p style="margin-bottom: 30px;">THE PROgrammer</p>
-            <p style="margin-bottom: 20px;">Supported languages: Java, JS, Dart, Python</p>
-            <p style="margin-bottom: 10px;">Frameworks: React & ReactNative, Vue, Angular, Ionic, Flutter, Django & more...</p>
-        </div>
 
         <div id="section2" class="section">
             <h1 style="margin-top: 50px; margin-bottom: 50px;">⭐SHOP⭐</h1>
@@ -316,12 +292,6 @@
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
-    <div class="bottom-nav">
-        <button onclick="showSection('section2')">Shop</button>
-        <button onclick="showSection('section1')">Hello</button>
-        <button onclick="showSection('section3')">BUY</button>
-    </div>
 
     <script>
         // Function to copy text
@@ -360,7 +330,7 @@
         if (savedSection) {
             showSection(savedSection);
         } else {
-            showSection('section1');
+            showSection('section2');
         }
 
         if ('serviceWorker' in navigator) {
