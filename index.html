@@ -2,361 +2,245 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/src/android/android-launchericon-512-512.png">
-    <link rel="manifest" href="https://progressier.app/5xTVyexc6EdqqL4ZYLxL/progressier.json"/>
-    <script defer src="https://progressier.app/5xTVyexc6EdqqL4ZYLxL/script.js"></script> 
+    <link rel="icon" href="/src/android/android-launchericon-512-512.png">
+    <link rel="manifest" href="https://progressier.app/5xTVyexc6EdqqL4ZYLxL/progressier.json">
+    <script defer src="https://progressier.app/5xTVyexc6EdqqL4ZYLxL/script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info graphy</title>
+    <title>Info Graphy</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+        /* Prevent horizontal overflow globally */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }   
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
         }
+
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://example.com/wood-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-            text-align: center;
-            overflow: visible;
-            font-family: "Nunito", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 'weight';
-            font-style: normal;
-        }
-        body.dark-theme {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-        .header {
-            width: 100%;
-            background-color: rgba(29, 29, 218, 0.332);
-            color: white;
-            padding: 15px 20px;
-            text-align: left;
-            font-size: 1.5em;
-            border-radius: 0 0 20px 20px;
-            z-index: 1000;
-            position: fixed;
-            top: 0;
-        }
-        #theme-switcher {
-            position: absolute;
-            top: 17px;
-            right: 20px;
-            background-color: #03dac500;
-            color: #121212;
-            border: none;
-            border-radius: 100px;
-            padding: 0px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            font-size: xx-large;
-        }
-        body.dark-theme #theme-switcher {
-            background-color: #bb86fc00;
-            color: #121212;
-        }
-        .container {
-            padding: 10px 0px;
-            width: 100%;
-            margin-top: 50px;            
-            background: rgba(87, 86, 213, 0.15);
-            backdrop-filter: blur(2.5px);
-            -webkit-backdrop-filter: blur(2.5px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.293);
+            justify-content: start;
         }
 
-        .nsv-b{
-            color: #cccccc;
-            background-color: #00000034;
-            position: relative;
-            width: fit-content;
-            border-radius: 20px;
-            height:fit-content;
-            border: none;
-            display:inline-flexbox;
-            margin: 0px;
-            left: 10px;
-            cursor: pointer;
-            font-size: xx-large;
-        }
-        .section {
-            display: none;
-            opacity: 0;
-            animation: fadeOut 0.5s ease;
-        }
-        .section.active {
-            display: block;
-            opacity: 1;
-            animation: fadeIn 0.5s ease;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-        }
-        img {
-            border-radius: 50%;
-            width: fit-content;
-            height: fit-content;
-            object-fit: cover;
-            margin-bottom: 50px;
-            margin-top: 20px;
-        }
-        @media (max-width: 600px) {
-            .header {
-                font-size: 1.2em;
-            }
-            .bottom-nav button {
-                font-size: 20px;
-                padding: 2px;
-            }
-        }
-        p {
-            font-size: large;
-        }
-        #tel {
-            background-color: #3898ff;
-            border: none;
-            width: 1000px;
-            max-width: 150px;
-            height: 30px;
-            border-radius: 20px;
-            margin-top: 30px;
-            cursor: pointer;
-            display: block;
-            margin: 15px auto 0px auto;
-        }
-        .hero {
-            height: 80vh;
+        .header {
+            width: 100%;
+            padding: 10px;
+            background-color: #663300;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            padding: 0 10%;
-            background: transparent;
-            color: #ffffff;
         }
-        .hero .text-content {
-            max-width: 50%;
-        }
-        .hero h1 {
-            font-size: 48px;
-            line-height: 1.2;
-        }
-        .hero p {
-            margin: 20px 0;
-            font-size: 18px;
-            color: #cccccc;
-        }
-        .hero .cta-button {
-            padding: 12px 24px;
-            background: #e91e63;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        .cta-button:hover {
-            background: #c2185b;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 60px 10%;
-            background: transparent;
-        }
-        .product-card {
-            background: #333333b0;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
-        }
-        .product-card img {
-            width: 100%;
-            border-radius: 4px;
-        }
-        .product-card h3 {
-            margin: 20px 0;
-            font-size: 22px;
-            color: #ffffff;
-        }
-        .product-card p {
-            color: #cccccc;
-            font-size: 16px;
-        }
-        .product-card .price {
+
+        .header button {
+            background-color: #cc6600;
+            border: 2px solid #995500;
+            color: white;
             font-size: 20px;
-            color: #e91e63;
-            font-weight: 700;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
         }
-        .prom {
-            width: 100%;
-            height: auto;
+
+        .header button:hover {
+            background-color: #ff9933;
+            transform: scale(1.1);
         }
-        /* Loading Overlay */
+
+        #theme-switcher {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            margin-right: 1%;
+            background-color: #cc6600;
+        }
+
         .loading-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 20000;
-            transition: opacity 1s ease;
-            opacity: 1;
+            z-index: 100;
         }
+
         .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
+            display: none;
         }
-        #hh{
-            width: 30px;
-            height: auto;
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(51, 25, 0, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            border: 5px solid #552200;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h1 {
+            color: #ffcc66;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        p {
+            color: #ffd9b3;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+
+        a button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 12px;
+            background-color: #ff9933;
+            border: 2px solid #995500;
+            color: white;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        a button:hover {
+            background-color: #ffcc66;
+            transform: scale(1.1);
+        }
+
+        .dark-theme {
+            background: #2e2b25;
+        }
+
+        .dark-theme .header {
+            background-color: #4d3319;
+        }
+
+        .dark-theme .container {
+            background-color: rgba(40, 24, 10, 0.9);
+        }
+
+        .dark-theme p,
+        .dark-theme h1 {
+            color: #ffcc99;
+        }
+
+        .dark-theme .header button {
+            background-color: #663300;
         }
     </style>
 </head>
 <body>
-
     <!-- Header -->
     <div class="header">
-        <button onclick="showSection('section2')" class="nsv-b" style="margin-left: 2%; font-size: 35px; background-color: transparent;">🛒</button>
-        <button onclick="showSection('section3')" class="nsv-b" style="margin-left: 5%; font-size: 35px;width: 150px;">💲BUY</button>
+        <button onclick="showSection('section2')" class="nsv-b" style="margin-left: 1%;">🛒</button>
+        <button onclick="showSection('section3')" class="nsv-b">💲BUY</button>
         <!-- Theme Switcher -->
         <button id="theme-switcher">☀️</button>
     </div>
 
     <!-- Loading Overlay -->
     <div id="loading-overlay" class="loading-overlay">
-        <img id="hh" src="gif-animations-replace-loading-screen-14.gif" alt="Loading..." style="width: 60%;height: auto;border-radius: 15px;"> <!-- Replace with your loading spinner URL -->
+        <img src="gif-animations-replace-loading-screen-14.gif" alt="Loading..." style="border-radius: 15px; box-shadow: 0px 0px 100px #ffffff83;">
     </div>
 
-    <!-- Container for content -->
-    <div class="container"> 
-
+    <!-- Content Container -->
+    <div class="container">
+        <!-- Shop Section -->
         <div id="section2" class="section">
-            <h1 style="margin-top: 50px; margin-bottom: 50px;">⭐SHOP⭐</h1>
-            <iframe id="shop-iframe" src="betshop.html" frameborder="0" style="height: 100vh;width: 100%; border-radius: 15px;margin-bottom: 50px; margin-left: 0px;margin-right: 0;
-            max-width: 1500px;"
-            ></iframe>
+            <h1>⭐SHOP⭐</h1>
+            <iframe id="shop-iframe" src="betshop.html"></iframe>
         </div>
 
+        <!-- Purchase Section -->
         <div id="section3" class="section">
-            <p style="margin-top: 50px;">شماره حساب : </p>
-            <p>6219-8619-3717-2517</p>
-            <p> استفاده از توکن (به زودی)</p>
-            <h1 style="margin-top: 30px;">استعلام خرید</h1>
-            <p>در صورت عدم تحویل در یک هفته نام خودتون فیش  آدرس و کد محصول رو بفرستید</p>
-            <a href="https://t.me/sooske2131">
-                <button id="tel" style="background-color: gold;"> Telegram < VPN > </button>
-            </a>
-            <a href="sms:09027588861">
-                <button id="tel"> SMS </button>
-            </a>
-            <a href="tel:0902-758-8861">
-                <button id="tel" style="margin-bottom: 50px;"> Call </button>
-            </a>
+            <p>شماره حساب: 6219-8619-3717-2517</p>
+            <p>استفاده از توکن (به زودی)</p>
+            <h1>استعلام خرید</h1>
+            <p>در صورت عدم تحویل در یک هفته نام، فیش و کد محصول را بفرستید</p>
+            <a href="https://t.me/sooske2131"><button>Telegram < VPN ></button></a>
+            <a href="sms:09027588861"><button>SMS</button></a>
+            <a href="tel:0902-758-8861"><button>Call</button></a>
         </div>
     </div>
-
 
     <script>
-        // Function to copy text
-        function copy(){
-            navigator.clipboard.writeText(document.getElementById('Code').innerText);
-            window.alert('code copied');
-            window.location.href = "shop.html";
-        }
-
-        // Theme Switcher
+        // Theme Switcher Logic
         const themeSwitcher = document.getElementById('theme-switcher');
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            document.body.classList.add(savedTheme);
-        }
+
+        if (savedTheme) document.body.classList.add(savedTheme);
+
         themeSwitcher.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
-            if (document.body.classList.contains('dark-theme')) {
-                localStorage.setItem('theme', 'dark-theme');
-            } else {
-                localStorage.removeItem('theme');
-            }
+            localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark-theme' : '');
         });
 
-        // Function to show the selected section
+        // Section Toggle
         function showSection(sectionId) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
+            document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
-            const activeSection = document.getElementById(sectionId);
-            activeSection.classList.add('active');
+            document.getElementById(sectionId).classList.add('active');
             localStorage.setItem('activeSection', sectionId);
         }
-        const savedSection = localStorage.getItem('activeSection');
-        if (savedSection) {
-            showSection(savedSection);
-        } else {
-            showSection('section2');
-        }
 
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-            .then(() => {
-                console.log('Service Worker registered successfully.');
-            })
-            .catch(error => {
-                console.error('Service Worker registration failed:', error);
-            });
-        }
+        // Load Active Section from Storage
+        showSection(localStorage.getItem('activeSection') || 'section2');
 
         // Handling iframe loading
         const iframe = document.getElementById('shop-iframe');
         const loadingOverlay = document.getElementById('loading-overlay');
-        
+
         iframe.addEventListener('load', () => {
-            setTimeout(() => {
-                loadingOverlay.classList.add('hidden');
-            }, 5000); // Hide overlay after 5 seconds even if iframe hasn't finished loading
+            setTimeout(() => loadingOverlay.classList.add('hidden'), 5000); // Hide overlay after 5 seconds
         });
 
-
-        //iframe.addEventListener('load', () => {
-             //loadingOverlay.classList.add('hidden');
-        //});
+        // Optional: Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(() => console.log('Service Worker registered successfully.'))
+                .catch(error => console.error('Service Worker registration failed:', error));
+        }
     </script>
 </body>
 </html>
