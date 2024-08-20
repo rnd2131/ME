@@ -24,19 +24,20 @@
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: url('https://example.com/wood-background.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #fff;
+            color: #fff ;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: start;
+            background-color: #ff9933;
+            transition: background-color 1.0s, transform 1.0s;
         }
 
         .header {
             width: 100%;
             padding: 10px;
-            background-color: #663300;
+            background-image: url(https://www.shutterstock.com/image-vector/cartoon-wooden-surface-600nw-252762637.jpg);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
             display: flex;
             justify-content: space-between;
@@ -44,8 +45,8 @@
         }
 
         .header button {
-            background-color: #cc6600;
-            border: 2px solid #995500;
+            background-color: #0000003a;
+            border: none;
             color: white;
             font-size: 20px;
             padding: 10px;
@@ -64,7 +65,7 @@
             border: none;
             font-size: 24px;
             margin-right: 1%;
-            background-color: #cc6600;
+            background-color: #0000003a;
         }
 
         .loading-overlay {
@@ -148,11 +149,7 @@
         }
 
         .dark-theme {
-            background: #2e2b25;
-        }
-
-        .dark-theme .header {
-            background-color: #4d3319;
+            background:#4d3319;
         }
 
         .dark-theme .container {
@@ -162,10 +159,6 @@
         .dark-theme p,
         .dark-theme h1 {
             color: #ffcc99;
-        }
-
-        .dark-theme .header button {
-            background-color: #663300;
         }
     </style>
 </head>
