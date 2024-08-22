@@ -148,13 +148,16 @@
                 color: #700000;
             }
         }
+        #search-bar{
+            direction: rtl;
+        }
     </style>
 </head>
 
 <body>
 
-    <input type="text" id="search-bar" placeholder="جستجوی محصولات..." oninput="filterProducts()"
-     style="margin-bottom: 20px; padding: 10px; width: 100%; box-sizing: border-box; border-radius: 5px;">
+    <input type="text" id="search-bar" placeholder="جستجو" oninput="filterProducts()"
+     style="margin-bottom: 20px; padding: 10px; width: 100%; box-sizing: border-box; border-radius: 20px;border: none;box-shadow: 0px 0px 10px #7ff4ff8f;">
 
     <!-- Product List -->
     <div id="products-list">
