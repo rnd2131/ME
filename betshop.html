@@ -152,6 +152,10 @@
 </head>
 
 <body>
+
+    <input type="text" id="search-bar" placeholder="جستجوی محصولات..." oninput="filterProducts()"
+     style="margin-bottom: 20px; padding: 10px; width: 100%; box-sizing: border-box; border-radius: 5px;">
+
     <!-- Product List -->
     <div id="products-list">
         <!-- The product items will be displayed here -->
@@ -183,31 +187,55 @@
         const purchaseCollectionId = '66bf759d0020d55c17eb'; // Collection ID for purchases
 
         // Function to fetch and display the collection
-        async function getProducts() {
-            try {
-                const response = await databases.listDocuments(databaseId, collectionId);
-                const productsList = document.getElementById('products-list');
+        let allProducts = []; // To store all products fetched from Appwrite
 
-                response.documents.forEach(product => {
-                    const productItem = document.createElement('div');
-                    productItem.className = 'product-item';
+// Function to fetch and display the collection
+async function getProducts() {
+    try {
+        const response = await databases.listDocuments(databaseId, collectionId);
+        allProducts = response.documents; // Store the fetched products
 
-                    productItem.innerHTML = `
-                        <img src="${product.imageUrl}" alt="${product.name}" class="product-img" loading="lazy">
-                        <h2>${product.name}</h2>
-                        <p id="cod" dir="rtl">کد محصول :${product.description}</p>
-                        <p id="vb">${product.availability}</p>
-                        <p class="price">تومان${product.price}</p>
-                        <button onclick="openPurchaseForm('${product.description}')"
-                            style="border-radius: 20px;background:#00000075;color: azure;border: none; width: 50%;padding: 10px; margin-top: 20px; cursor:pointer;">BUY</button>
-                    `;
+        displayProducts(allProducts); // Display all products initially
+    } catch (error) {
+        console.error('Failed to fetch products:', error);
+    }
+}
 
-                    productsList.appendChild(productItem);
-                });
-            } catch (error) {
-                console.error('Failed to fetch products:', error);
-            }
-        }
+// Function to display products based on a given list
+function displayProducts(products) {
+    const productsList = document.getElementById('products-list');
+    productsList.innerHTML = ''; // Clear the product list
+
+    products.forEach(product => {
+        const productItem = document.createElement('div');
+        productItem.className = 'product-item';
+
+        productItem.innerHTML = `
+            <img src="${product.imageUrl}" alt="${product.name}" class="product-img" loading="lazy">
+            <h2>${product.name}</h2>
+            <p id="cod" dir="rtl">کد محصول :${product.description}</p>
+            <p id="vb">${product.availability}</p>
+            <p class="price">تومان${product.price}</p>
+            <button onclick="openPurchaseForm('${product.description}')"
+                style="border-radius: 20px;background:#00000075;color: azure;border: none; width: 50%;padding: 10px; margin-top: 20px; cursor:pointer;">BUY</button>
+        `;
+
+        productsList.appendChild(productItem);
+    });
+}
+
+// Function to filter products based on search input
+function filterProducts() {
+    const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+    const filteredProducts = allProducts.filter(product => 
+        product.name.toLowerCase().includes(searchTerm) || 
+        product.description.toLowerCase().includes(searchTerm)
+    );
+
+    displayProducts(filteredProducts); // Display the filtered products
+}
+
+
 
         // Function to open the purchase form with product details
         function openPurchaseForm(productCode) {
