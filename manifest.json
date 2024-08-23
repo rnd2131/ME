@@ -2,7 +2,7 @@
   "name": "B SHOP",
   "short_name": "B SHOP",
   "description": "هرکی خرید نکنه خره",
-  "start_url": "https://info-gilt.vercel.app",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000003a",
   "theme_color": "#0000",
