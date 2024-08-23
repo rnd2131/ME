@@ -1,21 +1,21 @@
 {
-    "name": "RADMAN",
-    "short_name": "RADMAN",
-    "start_url": "https://info-gilt.vercel.app/",
-    "display": "standalone",
-    "background_color": "rgba( 87, 86, 213, 0.15 )",
-    "theme_color": "rgba( 87, 86, 213, 0.15 )",
-    "icons": [
-      {
-        "src": "/src/android/android-launchericon-192-192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "/src/android/android-launchericon-512-512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ]
-  }
-  
+  "name": "B SHOP",
+  "short_name": "B SHOP",
+  "description": "هرکی خرید نکنه خره",
+  "start_url": "https://info-gilt.vercel.app",
+  "display": "standalone",
+  "background_color": "#000003a",
+  "theme_color": "#0000",
+  "icons": [
+    {
+      "src": "/ico/SPRK_default_preset_name_custom – 1-modified.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/ico/SPRK_default_preset_name_custom – 1-modified.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
