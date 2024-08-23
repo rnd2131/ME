@@ -8,6 +8,7 @@ const collectionId = '66bf3028000c0a34101e';
 const purchaseCollectionId = '66bf759d0020d55c17eb'; // Collection ID for purchases
 
 let allProducts = []; // To store all products fetched from Appwrite
+let filteredProducts = []; // To store filtered products
 let selectedProduct = null; // To store selected product for purchase
 
 // Function to fetch and display the products
@@ -15,7 +16,8 @@ async function getProducts() {
     try {
         const response = await databases.listDocuments(databaseId, collectionId);
         allProducts = response.documents; // Store fetched products
-        displayProducts(allProducts); // Display all products
+        filteredProducts = allProducts; // Initially, all products are displayed
+        displayProducts(filteredProducts); // Display all products
     } catch (error) {
         console.error('Failed to fetch products:', error);
     }
@@ -43,6 +45,28 @@ function displayProducts(products) {
     });
 }
 
+// Search function to filter products by name
+function searchProducts() {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    filteredProducts = allProducts.filter(product =>
+        product.name.toLowerCase().includes(searchTerm)
+    );
+    displayProducts(filteredProducts);
+}
+
+// Filter products by price
+function filterByPrice() {
+    const priceOrder = document.getElementById('price-filter').value;
+
+    if (priceOrder === 'low') {
+        filteredProducts.sort((a, b) => a.price - b.price);
+    } else if (priceOrder === 'high') {
+        filteredProducts.sort((a, b) => b.price - a.price);
+    }
+
+    displayProducts(filteredProducts);
+}
+
 // Function to open the purchase form
 function openPurchaseForm(productId) {
     selectedProduct = allProducts.find(product => product.$id === productId); // Get the selected product
@@ -56,58 +80,20 @@ function closePurchaseForm() {
 
 // Function to submit the purchase
 async function submitPurchase() {
-    const name = document.getElementById('buyer-name').value;
-    const address = document.getElementById('buyer-address').value;
-    const phone = document.getElementById('buyer-phone').value;
-
-    if (!name || !address || !phone || !selectedProduct) {
-        alert('Please fill all the fields.');
-        return;
-    }
-
-    try {
-        await databases.createDocument(databaseId, purchaseCollectionId, {
-            productId: selectedProduct.$id,
-            name: name,
-            address: address,
-            phone: phone
-        });
-
-        alert('Purchase successful! Redirecting to payment gateway...');
-        window.location.href = 'https://payment-gateway.com'; // Replace with actual payment URL
-    } catch (error) {
-        console.error('Failed to submit purchase:', error);
-    }
-}
-
-// Theme toggle function
-function toggleTheme() {
-    document.body.classList.toggle('dark');
-    document.querySelectorAll('.product-item').forEach(item => item.classList.toggle('dark'));
-    document.getElementById('purchase-form').classList.toggle('dark');
-    document.getElementById('theme-switcher').classList.toggle('dark');
-}
-
-// Fetch and display products on page load
-getProducts();
-
-async function submitPurchase() {
     const buyerName = document.getElementById('buyer-name').value;
     const buyerAddress = document.getElementById('buyer-address').value;
-    const quantity = document.getElementById('quantity').value; // Get quantity value
-    const productCode = document.getElementById('product-code').value; // Get product code value
+    const quantity = document.getElementById('quantity').value;
+    const productCode = document.getElementById('product-code').value;
 
     if (buyerName && buyerAddress && productCode && quantity > 0) {
         try {
-            // Create a purchase document
             await databases.createDocument(databaseId, purchaseCollectionId, 'unique()', {
                 buyerName,
                 buyerAddress,
                 productCode,
-                quantity // Include quantity in the document
+                quantity
             });
 
-            // Show success messages and close the form
             alert('برای تکمیل خرید به منو BUY بروید');
             alert('در صورت واریز مبلغ، کالا تحویل داده می‌شود.');
             alert('درصورت بروز مشکل از طریق تلگرام یا پیامک در ارتباط باشید.');
@@ -120,3 +106,19 @@ async function submitPurchase() {
         alert('لطفاً تمام اطلاعات را وارد کنید');
     }
 }
+
+// Theme Switcher
+function toggleTheme() {
+    document.body.classList.toggle('dark');
+    const productItems = document.querySelectorAll('.product-item');
+    productItems.forEach(item => item.classList.toggle('dark'));
+
+    const header = document.querySelector('.header');
+    header.classList.toggle('dark');
+
+    const themeSwitcher = document.getElementById('theme-switcher');
+    themeSwitcher.classList.toggle('dark');
+}
+
+// Initialize the product list
+getProducts();

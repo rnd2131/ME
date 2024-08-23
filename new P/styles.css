@@ -6,6 +6,38 @@ body {
     transition: background 0.3s, color 0.3s;
 }
 
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #ff6f61;
+    color: white;
+}
+
+.header-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.header-controls input,
+.header-controls select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.header-controls button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: white;
+    color: #ff6f61;
+    border: none;
+    font-weight: bold;
+}
+
 .products-container {
     display: flex;
     flex-wrap: wrap;
@@ -83,18 +115,11 @@ body.dark {
     background-color: #34495e;
 }
 
-#theme-switcher {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px;
-    cursor: pointer;
-    background: #ff6f61;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.header.dark {
+    background: #34495e;
 }
 
-#theme-switcher.dark {
+.header-controls button.dark {
     background: #34495e;
+    color: white;
 }
