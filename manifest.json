@@ -4,7 +4,7 @@
   "description": "هرکی خرید نکنه خره",
   "start_url": "https://info-gilt.vercel.app/",
   "display": "standalone",
-  "background_color": "#000003a",
+  "background_color": "#0000",
   "theme_color": "#0000",
   "icons": [
     {
