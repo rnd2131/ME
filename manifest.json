@@ -17,5 +17,13 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+  "id": "rnd2131-shop",
+  "dir": "auto",
+  "scope": "none",
+  "lang": "fa",
+  "orientation": "portrait",
+  "categories": [
+    "business"
   ]
 }
