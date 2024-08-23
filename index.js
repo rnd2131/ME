@@ -32,7 +32,6 @@ function showSection(sectionId) {
 showSection(localStorage.getItem('activeSection') || 'section2');
 
 // Handling iframe loading
-const iframe = document.getElementById('products-list');
 const loadingOverlay = document.getElementById('loading-overlay');
 
 iframe.addEventListener('load', () => {
