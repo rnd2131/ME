@@ -84,16 +84,11 @@
           if (notificationPermission !== 'granted') {
             console.log('Notification permission not granted');
           } else {
-            const title = 'Test Notification';
+            const title = 'HI!!';
             const options = {
-              body: 'Do you like this ?',
-              icon: 'icon.png',
+              body: 'NOTE',
+              icon: './ico/SPRK_default_preset_name_custom – 1-modified.png',
               vibrate: [200, 100, 200, 100, 200, 100, 400],
-              tag: 'request',
-              actions: [
-                { action: 'yes', title: 'Yes', icon: 'icon.png' },
-                { action: 'no', title: 'No', icon: 'icon.png' }
-              ]
             };
             const res = await registration.showNotification(title, options);
             console.log(res);
