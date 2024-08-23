@@ -31,12 +31,5 @@ function showSection(sectionId) {
 // Load Active Section from Storage
 showSection(localStorage.getItem('activeSection') || 'section2');
 
-// Handling iframe loading
-const loadingOverlay = document.getElementById('loading-overlay');
-
-iframe.addEventListener('load', () => {
-    setTimeout(() => loadingOverlay.classList.add('hidden'), 6000); // Hide overlay after 3 seconds
-});
-
 // Initialize the theme icon
 updateThemeIcon();
