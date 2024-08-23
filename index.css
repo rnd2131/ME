@@ -28,7 +28,7 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    border-radius: 0 0 20px 20px;
+    border-radius:20px;
 }
 
 
@@ -39,7 +39,7 @@ body {
 
 .header button,
 .header nav a {
-    background-color: #000000;
+    background-color: #0000003a;
     border: none;
     color: white;
     font-size: 14px;
@@ -55,17 +55,25 @@ body {
 }
 
 .header nav {
-        display: none;
-        position: absolute;
-        border-radius: 0px 15px 15px 0px;
-        top: 0px;
-        left: 0;
-        width: fit-content;
-        height: fit-content;
-        background-color: #212121;
-        flex-direction:row;
-        align-items: start;
-        padding: 12px 40px;
+    display: none;
+    position: absolute;
+    border-radius: 0px 0px 20px 20px;
+    top: 100%;
+    left: 1%;
+    width: 20%;
+    height: fit-content;
+    background-color: rgb(255, 187, 187);
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    z-index: 10;
+    border-left:    3px solid #0000003a;
+    border-right:  3px solid #0000003a; 
+    border-bottom: 3px solid #0000003a;
     }
 
     .header nav.active {
@@ -78,7 +86,7 @@ body {
 
 .header button:hover,
 .header nav a:hover {
-    background-color: #272727;
+    background-color: #0000001c;
     transform: scale(1.1);
 }
 
@@ -180,13 +188,19 @@ a button:hover {
 }
 
 .dark-theme .header nav {
-        background-color: #ffffff64;
+        background-color: #343434;
 }
 
 .dark-theme .header nav a,
 .dark-theme .header button {
-    background-color: #d9d9d9;
-    color: #191919;
+    background-color: #0000003a;
+    color: #eeeeee;
+}
+
+.dark-theme .header button:hover,
+.dark-theme  .header nav a:hover {
+    background-color: #0000001c;
+    transform: scale(1.1);
 }
 
 /* Responsive Styles */
@@ -194,15 +208,20 @@ a button:hover {
     .header nav {
         display: none;
         position: absolute;
-        border-radius: 0px 15px 15px 0px;
-        top: 0px;
-        left: 0;
-        width: fit-content;
+        border-radius: 0px 0px 20px 20px;
+        top: 100%;
+        left: 7%;
+        width: 80%;
         height: fit-content;
-        background-color: #00000064;
+        background-color: rgb(255, 187, 187);
         flex-direction:row;
-        align-items: start;
-        padding: 12px 40px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px 10px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        z-index: 10;
     }
 
     .header nav.active {

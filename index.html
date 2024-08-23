@@ -15,8 +15,9 @@
     <!-- Header -->
     <div class="header">
         <button class="menu-button" id="menu" onclick="toggleMenu()">☰</button>
+        <input type="text" id="search-bar" placeholder="جستجو" oninput="filterProducts()">
         <nav>
-            <a href="javascript:void(0);" onclick="showSection('section2')" style="margin-left: 20px;">🛒 فروشگاه</a>
+            <a href="javascript:void(0);" onclick="showSection('section2')">🛒 فروشگاه</a>
             <a href="javascript:void(0);" onclick="showSection('section3')">💲 خرید</a>
         </nav>
         <!-- Theme Switcher -->
@@ -25,10 +26,9 @@
 
     <!-- Content Container -->
     <div class="container">
-        <link rel="stylesheet" href="./css/betshop.css">
         <!-- Shop Section -->
         <div id="section2" class="section">
-            <input type="text" id="search-bar" placeholder="جستجو" oninput="filterProducts()">
+            
 
             <!-- Product List -->
             <div id="products-list">
