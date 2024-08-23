@@ -7,7 +7,6 @@
     <link rel="icon" href="./ico/SPRK_default_preset_name_custom – 1-modified.png">
     <link rel="stylesheet" href="./css/betshop.css">
     <link rel="stylesheet" href="index.css">
-    <link rel="manifest" href="/manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <title>چوبوار / Wood wall</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,7 +14,8 @@
     <meta name="apple-mobile-web-app-title" content="B shop">
     <link rel="apple-touch-icon" href="./ico/SPRK_default_preset_name_custom – 1-modified.png">
     <meta name="msapplication-TileImage" content="./ico/SPRK_default_preset_name_custom – 1-modified.png">
-<link rel="manifest" href="manifest.json" />    <meta name="msapplication-TileColor" content="#1f1f1f">
+    <link rel="manifest" href="manifest.json" />    
+    <meta name="msapplication-TileColor" content="#1f1f1f">
 </head>
 
 <body>
@@ -78,7 +78,7 @@
         window.addEventListener('load', async () => {
       if ('serviceWorker' in navigator) {
         try {
-          const registration = await navigator.serviceWorker.register('./sw.js');
+          const registration = await navigator.serviceWorker.register('./service-worker.js');
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
           const notificationPermission = await Notification.requestPermission();
           if (notificationPermission !== 'granted') {
