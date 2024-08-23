@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive eCommerce</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.0"></script>
+</head>
+<body>
+    <!-- Theme Switcher -->
+    <button id="theme-switcher" onclick="toggleTheme()">Switch Theme</button>
+
+    <!-- Products List -->
+    <div id="products-list" class="products-container"></div>
+
+<!-- Purchase Form -->
+<div id="purchase-form" class="purchase-form" style="display: none;">
+    <h3>Purchase Form</h3>
+    <input type="text" id="buyer-name" placeholder="نام شما">
+    <input type="text" id="buyer-address" placeholder="آدرس شما">
+    <input type="number" id="quantity" placeholder="تعداد"> <!-- Input for quantity -->
+    <input type="text" id="product-code" placeholder="کد محصول"> <!-- Input for product code -->
+    <button onclick="submitPurchase()">پرداخت</button>
+    <button id="back-button" onclick="closePurchaseForm()">بازگشت</button>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
