@@ -2,10 +2,10 @@
   "name": "B SHOP",
   "short_name": "B SHOP",
   "description": "هرکی خرید نکنه خره",
-  "start_url": "https://b-shop-radmans.vercel.app",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#0000",
-  "theme_color": "#0000",
+  "background_color": "#1f1f1f",
+  "theme_color": "#1f1f1f",
   "icons": [
     {
       "src": "/ico/SPRK_default_preset_name_custom – 1-modified.png",
