@@ -16,6 +16,15 @@
     <meta name="msapplication-TileImage" content="./ico/SPRK_default_preset_name_custom – 1-modified.png">
     <link rel="manifest" href="manifest.json" />    
     <meta name="msapplication-TileColor" content="#1f1f1f">
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "b65d9880-0c78-43be-8eee-7d50488d1f42",
+    });
+  });
+</script>
 </head>
 
 <body>
