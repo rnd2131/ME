@@ -165,3 +165,30 @@ body {
         gap: 15px;
     }
 }
+
+#sorting-buttons{
+    background: #1f1f1f;
+    border-radius: 20px 0px 0px 20px;
+    border: none;
+    justify-content: end;
+    text-align: end;
+    width: 100px;
+    padding: 10px;
+    margin-top: 70px;
+    right: 0px;
+    position: absolute;
+}
+
+#sorting-buttons button{
+    background-color: #218838;
+    border: none;
+    width: 100%;
+    margin: 10px;
+    height: 30px;
+    border-radius: 20px;
+    cursor: pointer
+}
+
+#sort-newest, #sort-newest :active{
+    background-color: #0056b3;
+}
