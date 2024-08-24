@@ -176,7 +176,7 @@ body {
     padding: 5px;
     margin-top: 70px;
     right: -50px;
-    position: fixed;
+    position:absolute;
 }
 
 #sorting-buttons button{
