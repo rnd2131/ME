@@ -73,6 +73,11 @@
     </div>
 
     <script src="index.js"></script>
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+          navigator.serviceWorker.register('sw.js')
+        }
+    </script>
 </body>
 
 </html>
