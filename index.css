@@ -128,9 +128,7 @@ body {
     width: 95%;
     max-width: 1200px;
     margin: 30px auto;
-    background-color: #3a3a3a5f;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
+    background-color: transparent;
     border: none;
     padding: 5px;
 }
