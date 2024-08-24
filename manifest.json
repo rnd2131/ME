@@ -1,0 +1,25 @@
+{
+  "background_color": "#1f1f1f",
+  "dir": "auto",
+  "display": "standalone",
+  "name": "چوبوار",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "چوبوار",
+  "start_url": "https://b-shop-radmans.vercel.app",
+  "theme_color": "#1f1f1f",
+  "icons": [
+    {
+      "src": "./ico/SPRK_default_preset_name_custom – 1-modified.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "id": "Woodwall.rnd2131",
+  "description": "buy more",
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "window-controls-overlay"
+  ]
+}
