@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه اینترنتی</title>
+    <link rel="stylesheet" href="styles.css"> <!-- لینک به فایل CSS شما -->
+</head>
+<body>
+
+    <!-- سربرگ -->
+    <header>
+
+        <section class="filter-menu">
+            <form>
+                <input type="text" id="search-bar" placeholder="جستجو" oninput="filterProducts()">            
+                <select id="sort-options" onchange="sortProducts()">
+                    <option value="newest">جدیدترین</option>
+                    <option value="oldest">قدیمی‌ترین</option>
+                    <option value="name">نام (الف تا ی)</option>
+                    <option value="price-asc">قیمت (کم به زیاد)</option>
+                    <option value="price-desc">قیمت (زیاد به کم)</option>
+                </select>
+            </form>
+        </section>
+
+        <nav>
+            <ul>
+                <li><a href="#">خانه</a></li>
+                <li><a href="#">فروشگاه</a></li>
+                <li><a href="#">درباره ما</a></li>
+                <li><a href="#">تماس با ما</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- محتوای اصلی -->
+    <main>
+        <div id="products-list" class="products">
+            <!-- آیتم‌های محصول به صورت پویا توسط جاوااسکریپت اینجا درج خواهند شد -->
+        </div>
+    </main>
+
+    <!-- مودال فرم خرید (به طور پیش‌فرض مخفی است) -->
+    <div id="purchase-form-container" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center;">
+        <div style="background:#fff; padding:20px; border-radius:10px; width:80%; max-width:500px; text-align:center;">
+            <h2>خرید محصول</h2>
+            <input type="text" id="product-code" hidden>
+            <input type="text" id="buyer-name" placeholder="نام خود را وارد کنید" style="width:100%; padding:10px; margin-bottom:10px;">
+            <input type="text" id="buyer-address" placeholder="آدرس خود را وارد کنید" style="width:100%; padding:10px; margin-bottom:10px;">
+            <input type="number" id="quantity" placeholder="تعداد را وارد کنید" style="width:100%; padding:10px; margin-bottom:10px;">
+            <button onclick="submitPurchase()" style="padding:10px 20px; background:#2c3e50; color:#fff; border:none; border-radius:5px;">ثبت خرید</button>
+            <button onclick="closePurchaseForm()" style="padding:10px 20px; background:#e74c3c; color:#fff; border:none; border-radius:5px; margin-top:10px;">بستن</button>
+        </div>
+    </div>
+
+    <!-- پاورقی -->
+    <footer>
+        <p>&copy; ۱۴۰۳ چوبوار.</p>
+        <p><a href="#">سیاست حفظ حریم خصوصی</a> | <a href="#">شرایط استفاده از خدمات</a></p>
+    </footer>
+
+    <script src="app.js"></script> <!-- لینک به فایل جاوااسکریپت شما -->
+</body>
+</html>
