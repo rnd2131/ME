@@ -34,7 +34,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixeds;
+    position:relative;
     border-radius:20px;
 }
 
