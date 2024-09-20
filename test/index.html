@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sign In</title>
+</head>
+<body>
+    
+<form id="signin-form">
+    <div class="form-item">
+      <label for="username">Username</label>
+      <div class="input-wrapper">
+        <input type="text" id="username" name="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required/>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="password">Password</label>
+      <div class="input-wrapper">
+        <input type="password" id="password" name="password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required/>
+        <button type="button" id="eyeball">
+          <div class="eye"></div>
+        </button>
+        <div id="beam"></div>
+      </div>
+    </div>
+    <button type="submit" id="submit">Sign in</button>
+</form>
+
+<!-- Appwrite SDK -->
+<script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.0"></script>
+<!-- Link to the custom JS file -->
+<script src="main.js"></script>
+
+<script>
+    // Select the form element
+    const form = document.getElementById('signin-form');
+
+    // Attach event listener to the form submission
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent form from refreshing the page
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Call the saveUser function (defined in main.js) to save credentials
+        await saveUser(username, password);
+    });
+</script>
+
+</body>
+</html>
