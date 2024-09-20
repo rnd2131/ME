@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appwrite Authentication Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.0"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        input, button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Appwrite Authentication</h2>
+        
+        <!-- Registration Form -->
+        <h3>Create Account</h3>
+        <input type="text" id="userId" placeholder="User ID">
+        <input type="email" id="registerEmail" placeholder="Email">
+        <input type="password" id="registerPassword" placeholder="Password">
+        <button id="registerBtn">Create Account</button>
+        
+        <!-- Login Form -->
+        <h3>Login</h3>
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button id="loginBtn">Login</button>
+        
+        <!-- Result Output -->
+        <div class="result" id="resultOutput">Result will be displayed here</div>
+    </div>
+
+    <script>
+        // Initialize Appwrite Client
+        const client = new Appwrite.Client()
+            .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite endpoint
+            .setProject('66bf2f0c001ed3fc6a5e'); // Your project ID
+
+        const account = new Appwrite.Account(client);
+
+        // Handle account creation
+        document.getElementById('registerBtn').addEventListener('click', function () {
+            const userId = document.getElementById('userId').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            account.create(userId, email, password).then(function (response) {
+                document.getElementById('resultOutput').innerText = 'Account Created: ' + JSON.stringify(response);
+            }, function (error) {
+                document.getElementById('resultOutput').innerText = 'Error: ' + error.message;
+            });
+        });
+
+        // Handle login
+        document.getElementById('loginBtn').addEventListener('click', function () {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            account.createEmailSession(email, password).then(function (response) {
+                document.getElementById('resultOutput').innerText = 'Logged in: ' + JSON.stringify(response);
+            }, function (error) {
+                document.getElementById('resultOutput').innerText = 'Error: ' + error.message;
+            });
+        });
+    </script>
+</body>
+</html>
