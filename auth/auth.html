@@ -139,7 +139,7 @@
             const password = document.getElementById('registerPassword').value;
 
             account.create(userId, email, password).then(function (response) {
-                document.getElementById('resultOutput').innerText = 'Account Created: ' + JSON.stringify(response);
+                document.getElementById('resultOutput').innerText = 'Account Created: ';
             }, function (error) {
                 document.getElementById('resultOutput').innerText = 'Error: ' + error.message;
             });
@@ -151,7 +151,7 @@
             const password = document.getElementById('loginPassword').value;
 
             account.createEmailSession(email, password).then(function (response) {
-                document.getElementById('resultOutput').innerText = 'Logged in: ' + JSON.stringify(response);
+                document.getElementById('resultOutput').innerText = 'Logged in: ';
             }, function (error) {
                 document.getElementById('resultOutput').innerText = 'Error: ' + error.message;
             });
