@@ -16,14 +16,14 @@
     <meta name="msapplication-TileImage" content="./ico/SPRK_default_preset_name_custom – 1-modified.png">
     <link rel="manifest" href="manifest.json" />    
     <meta name="msapplication-TileColor" content="#1f1f1f">
-    <script>
-      window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(async function(OneSignal) {
-        await OneSignal.init({
-          appId: "b65d9880-0c78-43be-8eee-7d50488d1f42",
-        });
-      });
-    </script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "b65d9880-0c78-43be-8eee-7d50488d1f42",
+    });
+  });
+</script>
 </head>
 
 <body>
@@ -46,7 +46,7 @@
                 <button id="sort-newest" >جدید ترین</button>
                 <button id="sort-oldest">قدیمی ترین</button>
             </div>
-        </div>
+          </div>
     </div>
 
     <!-- Content Container -->
@@ -55,7 +55,7 @@
         <div id="section2" class="section">
             <!-- Product List -->
             <div id="products-list">
-                <!-- The product items will be displayed here -->
+            <!-- The product items will be displayed here -->
             </div>
 
             <!-- Purchase Form -->
@@ -92,56 +92,6 @@
     <script>
         if (typeof navigator.serviceWorker !== 'undefined') {
           navigator.serviceWorker.register('sw.js')
-        }
-
-        // Appwrite Initialization
-        const client = new Appwrite.Client()
-            .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite endpoint
-            .setProject('66bf2f0c001ed3fc6a5e'); // Your Appwrite project ID
-
-        const account = new Appwrite.Account(client);
-
-        // Check if user is logged in
-        function isAuthenticated() {
-            return account.get().then(response => {
-                return true; // User is logged in
-            }).catch(error => {
-                return false; // User is not logged in
-            });
-        }
-
-        // Show login prompt
-        function promptLogin() {
-            alert('Please log in to proceed with the purchase.');
-            // Redirect or open a login form (or use Appwrite's login modal if applicable)
-        }
-
-        // Submit purchase function
-        async function submitPurchase() {
-            const userLoggedIn = await isAuthenticated();
-
-            if (!userLoggedIn) {
-                promptLogin();
-                return;
-            }
-
-            const buyerName = document.getElementById('buyer-name').value;
-            const buyerAddress = document.getElementById('buyer-address').value;
-            const phoneNumber = document.getElementById('quantity').value;
-            const productCode = document.getElementById('product-code').value;
-
-            // Proceed with the purchase only if authenticated
-            if (buyerName && buyerAddress && phoneNumber && productCode) {
-                // Call your backend API to handle the purchase or directly interact with Appwrite's database
-                alert('Purchase submitted successfully.');
-                closePurchaseForm(); // Close form after submission
-            } else {
-                alert('Please fill in all fields.');
-            }
-        }
-
-        function closePurchaseForm() {
-            document.getElementById('purchase-form-container').style.display = 'none';
         }
     </script>
 </body>
